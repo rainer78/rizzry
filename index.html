@@ -23,6 +23,7 @@
       --surface2:#F7F8FB;
 
       --accent:#6D28D9;
+      --accent2:#A78BFA;      /* added (used by hero gradient) */
       --accentHover:#5B21B6;
       --accentSoft:#EDE9FE;
 
@@ -34,6 +35,13 @@
 
       --radiusCard:22px;
       --radiusBtn:12px;
+
+      /* added for the modern hero block */
+      --bg:#FFFFFF;
+      --muted: var(--slate);
+      --soft: rgba(15,23,42,.10);
+      --radius: var(--radiusCard);
+      --card: rgba(255,255,255,.92);
     }
 
     *{box-sizing:border-box}
@@ -121,69 +129,8 @@
     .btn:hover .arrow{transform: translateX(2px)}
 
     /* Sections */
-    .heroStage{
-      background:
-        radial-gradient(1200px 600px at 20% 0%, rgba(109,40,217,0.18) 0%, rgba(109,40,217,0.00) 60%),
-        radial-gradient(900px 500px at 90% 20%, rgba(167,139,250,0.22) 0%, rgba(167,139,250,0.00) 55%),
-        #FFFFFF;
-      padding:56px 0 44px;
-    }
     .section{padding:84px 0}
     .sectionSoft{background: linear-gradient(180deg, #FFFFFF 0%, #F8F7FF 100%);}
-
-    .hero{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:26px;
-      align-items:center;
-    }
-
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:8px 12px;
-      border-radius:999px;
-      background:rgba(109,40,217,.08);
-      border:1px solid rgba(109,40,217,.12);
-      color:var(--accent);
-      font-weight:800;
-      font-size:13px;
-      letter-spacing:.2px;
-      width:fit-content;
-    }
-    h1{
-      margin:14px 0 12px;
-      font-size:52px;
-      line-height:1.04;
-      letter-spacing:-.6px;
-    }
-    .sub{
-      margin:0;
-      font-size:18px;
-      line-height:1.65;
-      color:var(--slate);
-      max-width:64ch;
-    }
-
-    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:18px}
-    .trustRow{
-      display:flex;gap:14px;flex-wrap:wrap;align-items:center;
-      margin-top:18px;
-      color:var(--slate);
-      font-size:13px;
-      font-weight:650;
-    }
-    .badge{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      background:rgba(255,255,255,.75);
-      border:1px solid var(--border);
-    }
-    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
-    .dot2{background:#A78BFA}
-    .dot3{background:#94A3B8}
 
     /* Cards */
     .card{
@@ -198,63 +145,9 @@
     }
     .cardHover:hover{transform: translateY(-2px);box-shadow: var(--shadowHover)}
 
-    /* Hero product mock */
-    .mock{
-      padding:18px;
-      border-radius: var(--radiusCard);
-      background: rgba(255,255,255,.9);
-      border: 1px solid rgba(15,23,42,.08);
-      box-shadow: 0 18px 54px rgba(15,23,42,.12);
-      position:relative;
-      overflow:hidden;
-    }
-    .mock::before{
-      content:"";
-      position:absolute;inset:-120px -120px auto auto;
-      width:260px;height:260px;border-radius:50%;
-      background: radial-gradient(circle, rgba(109,40,217,.22) 0%, rgba(109,40,217,0) 62%);
-      pointer-events:none;
-    }
-    .mockTop{
-      display:flex;align-items:center;justify-content:space-between;gap:10px;
-      padding:10px 10px 14px;
-      border-bottom:1px solid rgba(15,23,42,.08);
-    }
-    .mockTitle{font-weight:900;letter-spacing:-.2px}
-    .mockHint{font-size:12px;color:var(--slate);font-weight:700}
-    .mockBody{padding:14px 10px 6px}
-    .mockQ{font-weight:900;margin:0 0 10px}
-    .mockOpt{
-      display:flex;gap:10px;align-items:flex-start;
-      padding:10px 10px;
-      border-radius:14px;
-      border:1px solid rgba(15,23,42,.10);
-      background: rgba(247,248,251,.8);
-      margin-bottom:10px;
-    }
-    .radio{
-      width:14px;height:14px;border-radius:50%;
-      border:2px solid rgba(109,40,217,.28);
-      margin-top:3px;
-      flex:0 0 auto;
-    }
-    .mockOpt strong{display:block;font-size:13px}
-    .mockOpt span{display:block;font-size:12px;color:var(--slate);line-height:1.45;margin-top:2px}
-    .mockResult{
-      margin-top:10px;
-      border-radius:16px;
-      border:1px solid rgba(109,40,217,.18);
-      background: linear-gradient(180deg, rgba(109,40,217,.08), rgba(237,233,254,.42));
-      padding:12px 12px;
-    }
-    .mockResult .label{font-size:12px;font-weight:900;color:var(--accent)}
-    .mockResult p{margin:6px 0 0;color:var(--slate);font-size:13px;line-height:1.5}
-
-    /* Problem cards */
+    /* Grids */
     .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-    .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    @media(max-width:980px){ .hero{grid-template-columns:1fr} h1{font-size:44px} }
-    @media(max-width:720px){ .grid3,.grid2{grid-template-columns:1fr} h1{font-size:38px} .navLinks{display:none} }
+    @media(max-width:720px){ .grid3{grid-template-columns:1fr} .navLinks{display:none} }
 
     .small{font-size:13px;color:var(--slate);line-height:1.55}
     h2{margin:0 0 10px;font-size:30px;line-height:1.15;letter-spacing:-.3px}
@@ -302,32 +195,12 @@
     .result h3{margin:0 0 6px}
     .result p{margin:0;color:var(--slate);line-height:1.6}
 
-    /* Proof strip */
-    .proofStrip{
-      margin-top:22px;
-      padding:14px 14px;
-      border-radius:18px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.75);
-      display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
-    }
-    .proofLeft{display:flex;align-items:center;gap:10px;color:var(--slate);font-weight:700;font-size:13px}
-    .logos{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    .logoPill{
-      padding:8px 10px;border-radius:999px;
-      border:1px solid var(--border);
-      background:#fff;
-      color:rgba(11,18,32,.78);
-      font-size:12px;
-      font-weight:850;
-      letter-spacing:.2px;
-    }
+    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:18px}
 
     /* Feature cards */
     .metric{
       font-size:22px;font-weight:950;letter-spacing:-.3px;margin:0 0 6px;
     }
-    .muted{color:var(--slate)}
     .iconBox{
       width:44px;height:44px;border-radius:14px;
       background: rgba(109,40,217,.10);
@@ -336,6 +209,7 @@
       margin-bottom:10px;
     }
     .iconBox svg{width:22px;height:22px;stroke:var(--accent)}
+
     .footer{
       padding:40px 0;
       border-top:1px solid var(--border);
@@ -355,330 +229,233 @@
     }
     summary{cursor:pointer;font-weight:850;color:var(--ink)}
     details p{margin:10px 0 0;color:var(--slate);line-height:1.6}
-    .hero{
-    background: radial-gradient(1200px 600px at 20% 10%, rgba(255,157,0,.10), transparent 60%),
-                radial-gradient(900px 520px at 80% 25%, rgba(255,106,42,.10), transparent 62%),
-                var(--bg);
-    color: var(--ink);
-    padding: clamp(36px, 5vw, 74px) 18px;
-    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
-  }
 
-  .hero__wrap{
-    max-width: 1120px;
-    margin: 0 auto;
-  }
+    /* =========================
+       MODERN HERO (no collisions)
+       ========================= */
+    .heroModern{
+      background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(255,157,0,.10), transparent 60%),
+        radial-gradient(900px 520px at 80% 25%, rgba(255,106,42,.10), transparent 62%),
+        var(--bg);
+      color: var(--ink);
+      padding: clamp(36px, 5vw, 74px) 18px;
+    }
+    .heroModern__wrap{max-width:1120px;margin:0 auto}
+    .heroModern__grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: clamp(22px, 4vw, 56px);
+      align-items:center;
+    }
+    .heroModern__eyebrow{
+      display:inline-block;
+      padding:10px 14px;
+      border: 1px solid var(--soft);
+      background: rgba(255,255,255,.55);
+      border-radius:999px;
+      font-size:13px;
+      color: var(--muted);
+      margin:0 0 14px 0;
+    }
+    .heroModern__title{
+      font-size: clamp(34px, 4.2vw, 54px);
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      margin:0 0 14px 0;
+    }
+    .heroModern__accent{color: var(--accent)}
+    .heroModern__lead{
+      font-size:16px;
+      line-height:1.6;
+      color: var(--muted);
+      max-width:54ch;
+      margin:0 0 22px 0;
+    }
+    .heroModern__ctaRow{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+    .heroModern__micro{
+      display:grid;
+      gap:6px;
+      padding:10px 12px;
+      border-radius:14px;
+      background: rgba(255,255,255,.55);
+      border:1px solid var(--soft);
+    }
+    .microLine{
+      font-size:13px;
+      color: var(--muted);
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .microLine::before{
+      content:"";
+      width: 8px; height: 8px;
+      border-radius:2px;
+      background: rgba(255,106,42,.8);
+      box-shadow: 0 0 0 3px rgba(255,106,42,.12);
+    }
+    .heroModern__bullets{
+      list-style:none;
+      padding:0;
+      margin:0 0 14px 0;
+      display:grid;
+      gap:8px;
+      color: var(--muted);
+      font-size:14px;
+    }
+    .heroModern__bullets li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .heroModern__bullets li::before{
+      content:"✓";
+      color: var(--accent);
+      font-weight:900;
+      margin-top:1px;
+    }
+    .heroModern__chips{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{
+      font-size:13px;
+      color: rgba(20,19,23,.78);
+      border:1px solid var(--soft);
+      background: rgba(255,255,255,.55);
+      padding:9px 12px;
+      border-radius:999px;
+    }
 
-  .hero__grid{
-    display: grid;
-    grid-template-columns: 1.05fr .95fr;
-    gap: clamp(22px, 4vw, 56px);
-    align-items: center;
-  }
+    .heroModern__visual{position:relative;min-height:420px}
+    .blob{
+      position:absolute;
+      inset: 26px 10px auto auto;
+      width: min(430px, 100%);
+      height: 340px;
+      border-radius: 220px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      filter: saturate(1.05);
+      box-shadow: 0 30px 90px rgba(255,106,42,.22);
+      transform: rotate(-10deg);
+    }
+    .figure{
+      position:absolute;
+      right: 34px;
+      top: 68px;
+      width: 220px;
+      height: 260px;
+    }
+    .figure__head{
+      width:56px;height:56px;border-radius:50%;
+      background: rgba(20,19,23,.15);
+      position:absolute;right:68px;top:10px;
+    }
+    .figure__body{
+      width:140px;height:160px;border-radius:32px;
+      background: rgba(255,255,255,.55);
+      border:1px solid rgba(255,255,255,.45);
+      position:absolute;right:40px;top:70px;
+      box-shadow: 0 18px 50px rgba(20,19,23,.10);
+    }
+    .figure__laptop{
+      width:170px;height:110px;border-radius:18px;
+      background: rgba(20,19,23,.18);
+      position:absolute;right:18px;top:148px;
+    }
 
-  .hero__eyebrow{
-    display: inline-block;
-    padding: 10px 14px;
-    border: 1px solid var(--soft);
-    background: rgba(255,255,255,.55);
-    border-radius: 999px;
-    font-size: 13px;
-    color: var(--muted);
-    margin: 0 0 14px 0;
-  }
+    .heroCard{
+      position:absolute;
+      left: 18px;
+      bottom: 18px;
+      width: min(360px, 92%);
+      background: var(--card);
+      border: 1px solid rgba(20,19,23,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      backdrop-filter: blur(10px);
+    }
+    .heroCard__top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:10px;
+    }
+    .heroCard__kicker{font-weight:900;letter-spacing:.01em;margin-bottom:3px}
+    .heroCard__meta{font-size:13px;color:var(--muted)}
+    .pill{
+      font-size:12px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--soft);
+      background: rgba(255,255,255,.55);
+      color: rgba(20,19,23,.78);
+      white-space:nowrap;
+    }
+    .heroCard__q{
+      font-size:14px;
+      line-height:1.45;
+      color: rgba(20,19,23,.86);
+      margin:10px 0 12px 0;
+      padding:10px 12px;
+      border-radius:14px;
+      background: rgba(20,19,23,.04);
+      border:1px solid rgba(20,19,23,.06);
+    }
+    .heroCard__answers{display:grid;gap:10px}
+    .heroRadio{
+      display:grid;
+      grid-template-columns: 18px 1fr;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:16px;
+      border:1px solid rgba(20,19,23,.08);
+      background: rgba(255,255,255,.62);
+      cursor:pointer;
+    }
+    .heroRadio input{position:absolute;opacity:0;pointer-events:none}
+    .heroRadio__ui{
+      width:16px;height:16px;border-radius:50%;
+      border:2px solid rgba(20,19,23,.18);
+      margin-top:2px;
+      background:white;
+      box-shadow: inset 0 0 0 4px white;
+    }
+    .heroRadio input:checked + .heroRadio__ui{
+      border-color: rgba(255,106,42,.55);
+      box-shadow: inset 0 0 0 4px white, 0 0 0 4px rgba(255,106,42,.14);
+      background: rgba(255,106,42,.20);
+    }
+    .heroRadio__text{font-size:14px;line-height:1.35}
+    .heroRadio__sub{
+      display:block;
+      font-size:12px;
+      color: var(--muted);
+      margin-top:3px;
+    }
 
-  .hero__title{
-    font-size: clamp(34px, 4.2vw, 54px);
-    line-height: 1.06;
-    letter-spacing: -0.02em;
-    margin: 0 0 14px 0;
-  }
-
-  .hero__accent{
-    color: var(--accent);
-  }
-
-  .hero__lead{
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--muted);
-    max-width: 54ch;
-    margin: 0 0 22px 0;
-  }
-
-  .hero__ctaRow{
-    display: flex;
-    gap: 18px;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
-  }
-
-  .btn{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 48px;
-    padding: 0 18px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-weight: 700;
-    letter-spacing: .01em;
-    border: 1px solid transparent;
-    box-shadow: 0 18px 40px rgba(255,106,42,.24);
-  }
-
-  .btn--primary{
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    color: white;
-  }
-
-  .btn--primary:hover{ filter: brightness(.98); transform: translateY(-1px); }
-  .btn--primary:active{ transform: translateY(0px); }
-
-  .hero__micro{
-    display: grid;
-    gap: 6px;
-    padding: 10px 12px;
-    border-radius: 14px;
-    background: rgba(255,255,255,.55);
-    border: 1px solid var(--soft);
-  }
-
-  .microLine{
-    font-size: 13px;
-    color: var(--muted);
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-
-  .microLine::before{
-    content:"";
-    width: 8px;
-    height: 8px;
-    border-radius: 2px;
-    background: rgba(255,106,42,.8);
-    box-shadow: 0 0 0 3px rgba(255,106,42,.12);
-  }
-
-  .hero__bullets{
-    list-style: none;
-    padding: 0;
-    margin: 0 0 14px 0;
-    display: grid;
-    gap: 8px;
-    color: var(--muted);
-    font-size: 14px;
-  }
-
-  .hero__bullets li{
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-  }
-
-  .hero__bullets li::before{
-    content:"✓";
-    color: var(--accent);
-    font-weight: 900;
-    margin-top: 1px;
-  }
-
-  .hero__chips{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .chip{
-    font-size: 13px;
-    color: rgba(20,19,23,.78);
-    border: 1px solid var(--soft);
-    background: rgba(255,255,255,.55);
-    padding: 9px 12px;
-    border-radius: 999px;
-  }
-
-  /* RIGHT SIDE VISUAL */
-  .hero__visual{
-    position: relative;
-    min-height: 420px;
-  }
-
-  .blob{
-    position: absolute;
-    inset: 26px 10px auto auto;
-    width: min(430px, 100%);
-    height: 340px;
-    border-radius: 220px;
-    background: linear-gradient(135deg, var(--accent2), var(--accent));
-    filter: saturate(1.05);
-    box-shadow: 0 30px 90px rgba(255,106,42,.22);
-    transform: rotate(-10deg);
-  }
-
-  /* Simple figure placeholder (swap with a real image if you want) */
-  .figure{
-    position: absolute;
-    right: 34px;
-    top: 68px;
-    width: 220px;
-    height: 260px;
-  }
-
-  .figure__head{
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    background: rgba(20,19,23,.15);
-    position: absolute;
-    right: 68px; top: 10px;
-  }
-
-  .figure__body{
-    width: 140px; height: 160px;
-    border-radius: 32px;
-    background: rgba(255,255,255,.55);
-    border: 1px solid rgba(255,255,255,.45);
-    position: absolute;
-    right: 40px; top: 70px;
-    box-shadow: 0 18px 50px rgba(20,19,23,.10);
-  }
-
-  .figure__laptop{
-    width: 170px; height: 110px;
-    border-radius: 18px;
-    background: rgba(20,19,23,.18);
-    position: absolute;
-    right: 18px; top: 148px;
-  }
-
-  .card{
-    position: absolute;
-    left: 18px;
-    bottom: 18px;
-    width: min(360px, 92%);
-    background: var(--card);
-    border: 1px solid rgba(20,19,23,.10);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 16px;
-    backdrop-filter: blur(10px);
-  }
-
-  .card__top{
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 10px;
-  }
-
-  .card__kicker{
-    font-weight: 800;
-    letter-spacing: .01em;
-    margin-bottom: 3px;
-  }
-
-  .card__meta{
-    font-size: 13px;
-    color: var(--muted);
-  }
-
-  .pill{
-    font-size: 12px;
-    padding: 7px 10px;
-    border-radius: 999px;
-    border: 1px solid var(--soft);
-    background: rgba(255,255,255,.55);
-    color: rgba(20,19,23,.78);
-    white-space: nowrap;
-  }
-
-  .card__q{
-    font-size: 14px;
-    line-height: 1.45;
-    color: rgba(20,19,23,.86);
-    margin: 10px 0 12px 0;
-    padding: 10px 12px;
-    border-radius: 14px;
-    background: rgba(20,19,23,.04);
-    border: 1px solid rgba(20,19,23,.06);
-  }
-
-  .card__answers{
-    display: grid;
-    gap: 10px;
-  }
-
-  .radio{
-    display: grid;
-    grid-template-columns: 18px 1fr;
-    gap: 10px;
-    padding: 10px 12px;
-    border-radius: 16px;
-    border: 1px solid rgba(20,19,23,.08);
-    background: rgba(255,255,255,.62);
-    cursor: pointer;
-  }
-
-  .radio input{
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .radio__ui{
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    border: 2px solid rgba(20,19,23,.18);
-    margin-top: 2px;
-    background: white;
-    box-shadow: inset 0 0 0 4px white;
-  }
-
-  .radio input:checked + .radio__ui{
-    border-color: rgba(255,106,42,.55);
-    box-shadow: inset 0 0 0 4px white, 0 0 0 4px rgba(255,106,42,.14);
-    background: rgba(255,106,42,.20);
-  }
-
-  .radio__text{
-    font-size: 14px;
-    line-height: 1.35;
-  }
-
-  .radio__sub{
-    display: block;
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 3px;
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 980px){
-    .hero__grid{ grid-template-columns: 1fr; }
-    .hero__visual{ min-height: 460px; }
-    .blob{ inset: 10px 0 auto auto; width: 100%; height: 300px; transform: rotate(-8deg); }
-    .figure{ right: 16px; top: 52px; transform: scale(.95); }
-    .card{ left: 0; right: 0; margin: 0 auto; }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    .btn--primary:hover, .btn--primary:active{ transform: none; }
-  }
-
+    @media (max-width: 980px){
+      .heroModern__grid{grid-template-columns:1fr}
+      .heroModern__visual{min-height:460px}
+      .blob{inset: 10px 0 auto auto; width:100%; height:300px; transform: rotate(-8deg)}
+      .figure{right:16px; top:52px; transform: scale(.95)}
+      .heroCard{left:0; right:0; margin:0 auto}
+    }
   </style>
 </head>
 
-<body>
+<body id="top">
   <!-- NAV -->
   <div class="navWrap">
     <div class="container">
       <div class="nav">
         <a class="brand" href="#top" aria-label="Rizzry home">
-          <!-- Logo (inline SVG) -->
           <svg width="160" height="36" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rizzry">
             <g>
               <rect x="2" y="6" width="34" height="28" rx="10" fill="#6D28D9"/>
@@ -714,143 +491,93 @@
     </div>
   </div>
 
- <!-- HERO) -->
-<section class="hero">
-  <div class="hero__wrap">
-    <div class="hero__grid">
-      <!-- LEFT: Copy -->
-      <div class="hero__copy">
-        <p class="hero__eyebrow">For solo businesses with traffic but no leads</p>
+  <!-- HERO -->
+  <section class="heroModern">
+    <div class="heroModern__wrap">
+      <div class="heroModern__grid">
+        <div>
+          <p class="heroModern__eyebrow">For solo businesses with traffic but no leads</p>
 
-        <h1 class="hero__title">
-          People see your work, but
-          <span class="hero__accent">nothing happens next</span>.
-        </h1>
+          <h1 class="heroModern__title">
+            People see your work, but
+            <span class="heroModern__accent">nothing happens next</span>.
+          </h1>
 
-        <p class="hero__lead">
-          You are getting views, traffic, or attention. What you are not getting is replies, bookings, or momentum.
-          The usual culprit is uncertainty paired with low response.
-        </p>
+          <p class="heroModern__lead">
+            You are getting views, traffic, or attention. What you are not getting is replies, bookings, or momentum.
+            The usual culprit is uncertainty paired with low response.
+          </p>
 
-        <div class="hero__ctaRow">
-          <a class="btn btn--primary" href="#diagnostic">Run the 10-second diagnostic</a>
-          <div class="hero__micro">
-            <div class="microLine">No email required to see your result</div>
-            <div class="microLine">One question. One next step.</div>
-          </div>
-        </div>
-
-        <ul class="hero__bullets" aria-label="Key points">
-          <li>Built for organic intent, not buzzwords</li>
-          <li>Fits common use cases</li>
-        </ul>
-
-        <div class="hero__chips" aria-label="Common use cases">
-          <span class="chip">Consultants</span>
-          <span class="chip">Local Services</span>
-          <span class="chip">Coaches</span>
-          <span class="chip">Creators</span>
-          <span class="chip">Real Estate</span>
-          <span class="chip">Beauty Pros</span>
-        </div>
-      </div>
-
-      <!-- RIGHT: Visual -->
-      <div class="hero__visual" aria-hidden="true">
-        <div class="blob"></div>
-
-        <!-- Optional person/illustration placeholder -->
-        <div class="figure">
-          <div class="figure__head"></div>
-          <div class="figure__body"></div>
-          <div class="figure__laptop"></div>
-        </div>
-
-        <!-- Card -->
-        <div class="card">
-          <div class="card__top">
-            <div>
-              <div class="card__kicker">Response Diagnostic</div>
-              <div class="card__meta">10 seconds · 1 question</div>
+          <div class="heroModern__ctaRow">
+            <a class="btn btnPrimary" href="#diagnostic">Run the 10-second diagnostic</a>
+            <div class="heroModern__micro">
+              <div class="microLine">No email required to see your result</div>
+              <div class="microLine">One question. One next step.</div>
             </div>
-            <span class="pill">Preview</span>
           </div>
 
-          <div class="card__q">
-            When someone discovers your business, what reliably happens next?
-          </div>
+          <ul class="heroModern__bullets" aria-label="Key points">
+            <li>Built for organic intent, not buzzwords</li>
+            <li>Fits common use cases</li>
+          </ul>
 
-          <div class="card__answers">
-            <label class="radio">
-              <input type="radio" name="next" checked />
-              <span class="radio__ui"></span>
-              <span class="radio__text">
-                They take a clear next step.
-                <span class="radio__sub">Low friction. Strong path.</span>
-              </span>
-            </label>
-
-            <label class="radio">
-              <input type="radio" name="next" />
-              <span class="radio__ui"></span>
-              <span class="radio__text">
-                Some engage, most disappear.
-                <span class="radio__sub">Usually clarity or trust gap.</span>
-              </span>
-            </label>
+          <div class="heroModern__chips" aria-label="Common use cases">
+            <span class="chip">Consultants</span>
+            <span class="chip">Local Services</span>
+            <span class="chip">Coaches</span>
+            <span class="chip">Creators</span>
+            <span class="chip">Real Estate</span>
+            <span class="chip">Beauty Pros</span>
           </div>
         </div>
+
+        <div class="heroModern__visual" aria-hidden="true">
+          <div class="blob"></div>
+
+          <div class="figure">
+            <div class="figure__head"></div>
+            <div class="figure__body"></div>
+            <div class="figure__laptop"></div>
+          </div>
+
+          <div class="heroCard">
+            <div class="heroCard__top">
+              <div>
+                <div class="heroCard__kicker">Response Diagnostic</div>
+                <div class="heroCard__meta">10 seconds · 1 question</div>
+              </div>
+              <span class="pill">Preview</span>
+            </div>
+
+            <div class="heroCard__q">
+              When someone discovers your business, what reliably happens next?
+            </div>
+
+            <div class="heroCard__answers">
+              <label class="heroRadio">
+                <input type="radio" name="nextPreview" checked />
+                <span class="heroRadio__ui"></span>
+                <span class="heroRadio__text">
+                  They take a clear next step.
+                  <span class="heroRadio__sub">Low friction. Strong path.</span>
+                </span>
+              </label>
+
+              <label class="heroRadio">
+                <input type="radio" name="nextPreview" />
+                <span class="heroRadio__ui"></span>
+                <span class="heroRadio__text">
+                  Some engage, most disappear.
+                  <span class="heroRadio__sub">Usually a clarity or trust gap.</span>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-  </div>
-</section>
-
-        <!-- Product mock (instead of stock photo) -->
-        <div class="mock" aria-label="Rizzry diagnostic preview">
-          <div class="mockTop">
-            <div>
-              <div class="mockTitle">Response Diagnostic</div>
-              <div class="mockHint">10 seconds · 1 question</div>
-            </div>
-            <div class="tag"><span class="mini"></span>Preview</div>
-          </div>
-
-          <div class="mockBody">
-            <p class="mockQ">When someone discovers your business, what reliably happens next?</p>
-
-            <div class="mockOpt">
-              <span class="radio" aria-hidden="true"></span>
-              <div>
-                <strong>They take a clear next step.</strong>
-                <span>Low friction. Strong path.</span>
-              </div>
-            </div>
-
-            <div class="mockOpt">
-              <span class="radio" aria-hidden="true"></span>
-              <div>
-                <strong>Some engage, most disappear.</strong>
-                <span>Usually clarity or trust gap.</span>
-              </div>
-            </div>
-
-            <div class="mockOpt">
-              <span class="radio" aria-hidden="true"></span>
-              <div>
-                <strong>I cannot tell.</strong>
-                <span>No visibility means no improvement.</span>
-              </div>
-            </div>
-
-            <div class="mockResult">
-              <div class="label">Sample result</div>
-              <p><strong>Response is inconsistent.</strong> Tighten one next step and put proof beside it.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
+  </section>
 
   <!-- PROBLEM RECOGNITION -->
   <section class="section">
@@ -1128,7 +855,9 @@
       resultEl.innerHTML =
         "<h3>" + r.title + "</h3>" +
         "<p>" + r.body + "</p>" +
-        "<p style='margin-top:10px'><strong>Next move:</strong> <span style='color:var(--slate)'>" + r.hint.replace("Next move: ", "") + "</span></p>";
+        "<p style='margin-top:10px'><strong>Next move:</strong> <span style='color:var(--slate)'>" +
+        r.hint.replace("Next move: ", "") +
+        "</span></p>";
       resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   </script>
