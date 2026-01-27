@@ -1,12 +1,407 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Rizzry</title>
-  <meta name="robots" content="index,follow">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Traffic but No Leads? Why People See Your Work but Don’t Respond | Rizzry</title>
+
+  <meta name="description" content="If people visit your site but don’t reply, book, or buy, the problem isn’t visibility. Run a 10-second diagnostic to find the leak and get a clear next step." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Canonical: update if you use a different path -->
+  <link rel="canonical" href="https://rizzry.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Traffic but No Leads? Why People See Your Work but Don’t Respond" />
+  <meta property="og:description" content="A 10-second diagnostic for solo businesses: identify why people see your work but do not respond, and get one practical fix." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rizzry.com/" />
+
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --panel:#121a2a;
+      --text:#e8edf6;
+      --muted:#a9b3c3;
+      --border:rgba(255,255,255,.12);
+      --accent:#7c3aed;
+      --accent2:#a78bfa;
+      --ok:#22c55e;
+      --warn:#f59e0b;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+      background:linear-gradient(180deg,#070a10 0%, var(--bg) 70%);
+      color:var(--text);
+    }
+    a{color:inherit}
+    .wrap{max-width:980px;margin:0 auto;padding:26px 18px 64px;}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:6px 0 22px;}
+    .brand{font-weight:750;letter-spacing:.2px}
+    .navlinks{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+    .navlinks a{color:var(--muted);text-decoration:none}
+    .btn{
+      display:inline-block;
+      background:var(--accent);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.16);
+      padding:12px 16px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:700;
+    }
+    .btn:hover{filter:brightness(1.05)}
+    .btnSecondary{
+      display:inline-block;
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      border:1px solid var(--border);
+      padding:12px 16px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:700;
+    }
+    .hero{padding:10px 0 6px}
+    .kicker{color:var(--accent2);font-weight:650;font-size:14px;letter-spacing:.2px}
+    h1{margin:10px 0 10px;font-size:40px;line-height:1.15}
+    .sub{color:var(--muted);font-size:18px;line-height:1.6;max-width:820px;margin:0}
+    .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+    .pill{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      padding:10px 12px;border-radius:12px;
+      color:var(--muted);font-size:14px;line-height:1.35
+    }
+    @media(max-width:860px){
+      h1{font-size:34px}
+      .grid3{grid-template-columns:1fr}
+    }
+    .section{margin-top:28px;padding-top:6px}
+    .section h2{margin:0 0 10px;font-size:22px}
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    @media(max-width:900px){.cards{grid-template-columns:1fr}}
+    .card{
+      border:1px solid var(--border);
+      background:rgba(18,26,42,.75);
+      border-radius:16px;
+      padding:16px
+    }
+    .card h3{margin:0 0 8px;font-size:16px}
+    .card p{margin:0;color:var(--muted);line-height:1.55}
+    .quoteList{margin:12px 0 0;padding:0;list-style:none}
+    .quoteList li{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      border-radius:12px;
+      padding:10px 12px;
+      margin:10px 0;
+      color:var(--text);
+    }
+    .quoteList span{display:block;color:var(--muted);margin-top:4px;font-size:14px;line-height:1.45}
+    .diag{
+      border:1px solid rgba(124,58,237,.35);
+      background:linear-gradient(180deg,rgba(124,58,237,.10),rgba(18,26,42,.72));
+      border-radius:18px;
+      padding:18px;
+      margin-top:18px
+    }
+    .diag h2{font-size:20px;margin:0 0 6px}
+    .q{margin:12px 0 10px;font-weight:750}
+    .opt{
+      display:flex;gap:10px;align-items:flex-start;
+      padding:10px 10px;border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      margin-bottom:10px;cursor:pointer
+    }
+    .opt input{margin-top:3px}
+    .opt span{color:var(--muted);line-height:1.45}
+    .ctaRow{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:12px}
+    .small{color:var(--muted);font-size:13px}
+    .result{
+      display:none;margin-top:14px;border-top:1px solid var(--border);
+      padding-top:14px
+    }
+    .result h3{margin:0 0 6px}
+    .result p{margin:0;color:var(--muted);line-height:1.55}
+    .callout{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      border-radius:16px;
+      padding:14px;
+      color:var(--muted);
+      line-height:1.6
+    }
+    .faq details{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      border-radius:14px;
+      padding:12px 12px;
+      margin:10px 0;
+    }
+    .faq summary{cursor:pointer;font-weight:700;color:var(--text)}
+    .faq p{margin:10px 0 0;color:var(--muted);line-height:1.55}
+    .footer{
+      margin-top:44px;
+      border-top:1px solid var(--border);
+      padding-top:16px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6
+    }
+    .tag{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.04);font-size:12px;color:var(--muted);margin-right:6px}
+  </style>
 </head>
+
 <body>
-  <h1>Rizzry</h1>
-  <p>Site live.</p>
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand">Rizzry</div>
+      <div class="navlinks">
+        <a href="#diagnostic">Diagnostic</a>
+        <a href="#why">Why this happens</a>
+        <a href="#what-you-get">What you get</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn" href="#diagnostic">Take the 10-second check</a>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="kicker">For solo businesses with traffic but no leads</div>
+
+      <!-- SEO Primary H1 -->
+      <h1>People see your work — but nothing happens next.</h1>
+
+      <p class="sub">
+        You are getting views, traffic, or attention. What you are not getting is replies, bookings, or momentum.
+        That gap is not effort, and it is not “posting more.” It is uncertainty paired with low response.
+      </p>
+
+      <div class="ctaRow">
+        <a class="btn" href="#diagnostic">Run the 10-second diagnostic</a>
+        <a class="btnSecondary" href="#why">Why “traffic but no leads” happens</a>
+      </div>
+
+      <div class="grid3">
+        <div class="pill"><strong>Designed for organic search intent:</strong> traffic but no leads, website visitors not converting, no inquiries from website.</div>
+        <div class="pill"><strong>One question.</strong> One clear result. No long quiz.</div>
+        <div class="pill"><strong>No email required</strong> to see your result.</div>
+      </div>
+    </header>
+
+    <!-- Problem articulation block (high intent language) -->
+    <section class="section" aria-label="Problem recognition">
+      <h2>If this sounds familiar, you are in the right place.</h2>
+
+      <ul class="quoteList">
+        <li>
+          “People see my stuff but don’t respond.”
+          <span>Often searched as: <em>people see my website but don’t contact me</em></span>
+        </li>
+        <li>
+          “I post, but nothing converts.”
+          <span>Often searched as: <em>posting but nothing converts</em></span>
+        </li>
+        <li>
+          “I get traffic, but no leads.”
+          <span>Often searched as: <em>traffic but no leads</em> / <em>no inquiries from website</em></span>
+        </li>
+        <li>
+          “I don’t know what to do next.”
+          <span>Often searched as: <em>how to get people to take action</em></span>
+        </li>
+        <li>
+          “I don’t have time to keep up.”
+          <span>Often searched as: <em>how to increase conversions without posting more</em></span>
+        </li>
+      </ul>
+
+      <div class="callout">
+        Most businesses assume this is a visibility problem. In reality, it is usually a response problem:
+        the next step is unclear, risky, or invisible. When people hesitate, they leave.
+        <br/><br/>
+        We use the word <strong>rizz</strong> as shorthand for response — not charm, not personality, but whether your system creates a next step without you pushing it.
+      </div>
+    </section>
+
+    <!-- Diagnostic (primary conversion action) -->
+    <section id="diagnostic" class="section">
+      <div class="diag">
+        <h2>Traffic but no leads? Find the leak in 10 seconds.</h2>
+        <div class="q">When someone discovers your business for the first time, what reliably happens next?</div>
+
+        <label class="opt"><input type="radio" name="rizz" value="A"><span>They take a clear next step without being prompted.</span></label>
+        <label class="opt"><input type="radio" name="rizz" value="B"><span>Some engage, but most disappear without action.</span></label>
+        <label class="opt"><input type="radio" name="rizz" value="C"><span>They consume content but rarely respond.</span></label>
+        <label class="opt"><input type="radio" name="rizz" value="D"><span>I honestly do not know.</span></label>
+        <label class="opt"><input type="radio" name="rizz" value="E"><span>Nothing happens unless I manually follow up.</span></label>
+
+        <div class="ctaRow">
+          <button id="showResult" class="btn" type="button">Show my result</button>
+          <span class="small">No email required. One clear result.</span>
+        </div>
+
+        <div id="result" class="result" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- What you get -->
+    <section id="what-you-get" class="section">
+      <h2>What you get (immediately)</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Your response type</h3>
+          <p>A plain-English label for what is happening now, so you stop guessing.</p>
+        </div>
+        <div class="card">
+          <h3>The likely leak</h3>
+          <p>Where people hesitate: clarity, trust, friction, or follow-up.</p>
+        </div>
+        <div class="card">
+          <h3>One fix to run this week</h3>
+          <p>A single action you can implement without rewriting your whole business.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why it happens (keyword cluster support) -->
+    <section id="why" class="section">
+      <h2>Why website visitors do not convert</h2>
+      <p class="sub" style="max-width:none;margin:0 0 12px;">
+        If you are getting traffic but no leads, one of these is usually the cause. This section intentionally targets the
+        “why” searches so the page can rank and earn trust before the diagnostic.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>The next step is unclear</h3>
+          <p>People do not guess. If the action is not obvious in one pass, response drops.</p>
+        </div>
+        <div class="card">
+          <h3>The offer is fuzzy</h3>
+          <p>If they cannot describe what you do and who it is for, they will not commit.</p>
+        </div>
+        <div class="card">
+          <h3>Trust signals are thin</h3>
+          <p>Specific proof beats generic claims. Without it, hesitation wins.</p>
+        </div>
+        <div class="card">
+          <h3>Friction is high</h3>
+          <p>Too many clicks, choices, or form fields turns interest into abandonment.</p>
+        </div>
+        <div class="card">
+          <h3>Follow-up is manual</h3>
+          <p>If the system depends on you remembering, it breaks under load and attention evaporates.</p>
+        </div>
+        <div class="card">
+          <h3>You cannot see the drop-off</h3>
+          <p>If you do not track the next step, you cannot improve it. Uncertainty becomes default.</p>
+        </div>
+      </div>
+
+      <div class="ctaRow">
+        <a class="btn" href="#diagnostic">Run the 10-second diagnostic</a>
+        <span class="small">This is the fastest way to identify which category you are in.</span>
+      </div>
+    </section>
+
+    <!-- On-page keyword map (helps internal planning; harmless to users) -->
+    <section class="section" aria-label="Keyword map">
+      <h2>What this page is built to answer</h2>
+      <div class="callout">
+        <span class="tag">traffic but no leads</span>
+        <span class="tag">website visitors not converting</span>
+        <span class="tag">no inquiries from website</span>
+        <span class="tag">posting but nothing converts</span>
+        <span class="tag">people see my website but don’t contact me</span>
+        <span class="tag">why people don’t take action</span>
+        <span class="tag">how to get more leads from website</span>
+        <br/><br/>
+        These are the searches your customer actually types. “Rizz” is the brand shorthand we use after we meet them in their real language.
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section faq">
+      <h2>FAQ</h2>
+
+      <details>
+        <summary>Is this telling me to post more?</summary>
+        <p>No. Posting more can amplify a broken system. The diagnostic focuses on what happens after someone notices you.</p>
+      </details>
+
+      <details>
+        <summary>Do I need to change my whole website?</summary>
+        <p>Usually not. Most response issues come from one weak link: unclear next step, thin trust, or unnecessary friction.</p>
+      </details>
+
+      <details>
+        <summary>Why call it “rizz” at all?</summary>
+        <p>Because it is memorable. We use it as shorthand for response, not charisma. The goal is follow-through, not performance.</p>
+      </details>
+
+      <details>
+        <summary>Will this work for local businesses?</summary>
+        <p>Yes. “No inquiries from website” is one of the most common local-business problems. The mechanics are the same.</p>
+      </details>
+    </section>
+
+    <footer class="footer">
+      <strong>Rizzry</strong> focuses on response systems for solo operators.
+      If your site gets attention but no action, the problem is rarely effort. It is the missing bridge between interest and the next step.
+      <br/><br/>
+      <a class="btn" href="#diagnostic">Run the 10-second diagnostic</a>
+    </footer>
+  </div>
+
+  <script>
+    const resultEl = document.getElementById("result");
+    const btn = document.getElementById("showResult");
+
+    const results = {
+      A: {
+        title: "Result: Your system creates response.",
+        body: "People take a next step without you pushing them. Your opportunity is consistency and scale: tighten one path and replicate it.",
+        hint: "Likely focus: tightening one conversion path and measuring it."
+      },
+      B: {
+        title: "Result: Response is inconsistent.",
+        body: "Some people engage, but most disappear. This often points to an unclear next step or a trust gap at the moment of decision.",
+        hint: "Likely focus: clarify one primary action and strengthen proof near it."
+      },
+      C: {
+        title: "Result: You have attention, not response.",
+        body: "People consume content but rarely act. This usually means the next step feels risky, unclear, or not worth the effort.",
+        hint: "Likely focus: reduce friction and make the action obvious in one pass."
+      },
+      D: {
+        title: "Result: You cannot see the system.",
+        body: "If you cannot observe the next step, you cannot improve it. Uncertainty becomes permanent and response cannot compound.",
+        hint: "Likely focus: define one measurable next step and track it."
+      },
+      E: {
+        title: "Result: You are doing all the follow-through manually.",
+        body: "The business works when you chase it. That is effective in the short term and fragile long term.",
+        hint: "Likely focus: build a basic follow-up loop that runs without you."
+      }
+    };
+
+    btn.addEventListener("click", () => {
+      const picked = document.querySelector("input[name='rizz']:checked");
+      if (!picked) {
+        alert("Select one option to see your result.");
+        return;
+      }
+      const r = results[picked.value];
+      resultEl.style.display = "block";
+      resultEl.innerHTML =
+        "<h3>" + r.title + "</h3>" +
+        "<p>" + r.body + "</p>" +
+        "<p style='margin-top:10px;color:var(--muted)'><strong>Next move:</strong> " + r.hint + "</p>";
+      resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
 </body>
 </html>
