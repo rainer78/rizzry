@@ -129,7 +129,8 @@
 
     .btn:focus-visible,
     .opt:focus-within,
-    summary:focus-visible{
+    summary:focus-visible,
+    input:focus-visible{
       outline:none;
       box-shadow: var(--focusRing);
     }
@@ -219,9 +220,7 @@
     }
 
     /* Feature cards */
-    .metric{
-      font-size:22px;font-weight:950;letter-spacing:-.3px;margin:0 0 6px;
-    }
+    .metric{font-size:22px;font-weight:950;letter-spacing:-.3px;margin:0 0 6px;}
     .iconBox{
       width:44px;height:44px;border-radius:14px;
       background: rgba(109,40,217,.10);
@@ -252,7 +251,7 @@
     details p{margin:10px 0 0;color:var(--slate);line-height:1.6}
 
     /* =========================
-       MODERN HERO (no collisions)
+       HERO (entry / awareness)
        ========================= */
     .heroModern{
       background:
@@ -330,11 +329,7 @@
       white-space:nowrap;
       font-weight:850;
     }
-    .sampleGrid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:10px;
-    }
+    .sampleGrid{display:grid;grid-template-columns: 1fr;gap:10px;}
     .sampleRow{
       border-radius:14px;
       border:1px solid rgba(15,23,42,.10);
@@ -535,18 +530,12 @@
       color: var(--slate);
       line-height:1.55;
       max-width: 70ch;
+      margin-top:10px;
     }
 
     /* Checklist section */
-    .checklistWrap{
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .checklistSteps{
-      display:grid;
-      gap:12px;
-      margin-top: 12px;
-    }
+    .checklistWrap{max-width: 900px;margin: 0 auto;}
+    .checklistSteps{display:grid;gap:12px;margin-top: 12px;}
     .step{
       border-radius:16px;
       border:1px solid var(--border);
@@ -557,6 +546,38 @@
     .stepTitle{margin:0 0 6px;font-weight:950}
     .stepBody{margin:0;color:var(--slate);line-height:1.6}
 
+    /* URL submission */
+    .formRow{display:grid;gap:10px;margin-top:10px}
+    .fieldLabel{display:block;font-weight:900;margin-bottom:8px}
+    .input{
+      width:100%;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(15,23,42,.14);
+      font-size:16px;
+      outline:none;
+      background:#fff;
+    }
+
+    .confirmBox{
+      display:none;
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid rgba(22,163,74,.22);
+      background: rgba(22,163,74,.08);
+      color: rgba(7,66,26,.95);
+      font-weight:800;
+      line-height:1.45;
+    }
+    .confirmSmall{
+      margin-top:8px;
+      font-size:13px;
+      color: var(--slate);
+      line-height:1.6;
+      font-weight:650;
+    }
+
     @media (max-width: 980px){
       .heroModern__grid{grid-template-columns:1fr}
       .heroModern__visual{min-height:460px}
@@ -564,14 +585,6 @@
       .figure{right:16px; top:52px; transform: scale(.95)}
       .heroCard{left:0; right:0; margin:0 auto}
     }
-
-    
-  #siteUrl:focus-visible,
-  #goal:focus-visible{
-    box-shadow: var(--focusRing);
-    border-color: rgba(109,40,217,.35);
-  }
-
   </style>
 </head>
 
@@ -597,13 +610,12 @@
 
         <div class="navLinks" aria-label="Primary navigation">
           <a href="#diagnostic">Diagnostic</a>
-          <a href="#why">Why it happens</a>
-          <a href="#what-you-get">What you get</a>
+          <a href="#checklist">Checklist</a>
+          <a href="#submit-url">Submit URL</a>
           <a href="#faq">FAQ</a>
         </div>
 
         <div class="navCtas">
-          <!-- Removed competing CTA button: “See causes” -->
           <a class="btn btnPrimary" href="#diagnostic">
             Take the 10-second check
             <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -616,7 +628,7 @@
     </div>
   </div>
 
-  <!-- HERO -->
+  <!-- 1) ENTRY / AWARENESS -->
   <section class="heroModern">
     <div class="heroModern__wrap">
       <div class="heroModern__grid">
@@ -628,7 +640,6 @@
             <span class="heroModern__accent">nothing happens next</span>.
           </h1>
 
-          <!-- Moved brand definition up (one-line translation) -->
           <p class="heroModern__definition">
             <strong>Rizzry</strong> is a response diagnostic: one question, one fix.
           </p>
@@ -638,25 +649,22 @@
             The usual culprit is uncertainty paired with low response.
           </p>
 
-          <!-- Above-the-fold proof: sample output -->
           <div class="sampleBox" aria-label="Sample output preview">
             <div class="sampleTop">
               <div class="sampleLabel">Sample output</div>
               <span class="samplePill">What you will see</span>
             </div>
-
             <div class="sampleGrid">
               <div class="sampleRow">
                 <strong>Result: Response is inconsistent.</strong>
                 <span>Some people engage, but most disappear. This points to a clarity or trust gap at the moment of decision.</span>
               </div>
-
               <div class="sampleFix">
                 <div class="sampleFixTitle">One fix you can run this week</div>
                 <ul class="sampleFixList">
-                  <li>Rewrite your primary CTA into one concrete action (not “Learn more”).</li>
-                  <li>Place one specific proof item next to it (testimonial, metric, before/after).</li>
-                  <li>Remove one friction point (extra click, extra form field, extra choice).</li>
+                  <li>Rewrite your primary CTA into one concrete action.</li>
+                  <li>Place one specific proof item next to it.</li>
+                  <li>Remove one friction point.</li>
                 </ul>
               </div>
             </div>
@@ -685,16 +693,13 @@
           </div>
         </div>
 
-        <!-- Decorative hero visual -->
         <div class="heroModern__visual" aria-hidden="true">
           <div class="blob"></div>
-
           <div class="figure">
             <div class="figure__head"></div>
             <div class="figure__body"></div>
             <div class="figure__laptop"></div>
           </div>
-
           <div class="heroCard">
             <div class="heroCard__top">
               <div>
@@ -703,11 +708,9 @@
               </div>
               <span class="pill">Preview</span>
             </div>
-
             <div class="heroCard__q">
               When someone discovers your business, what reliably happens next?
             </div>
-
             <div class="heroCard__answers">
               <label class="heroRadio">
                 <input type="radio" name="nextPreview" checked />
@@ -717,7 +720,6 @@
                   <span class="heroRadio__sub">Low friction. Strong path.</span>
                 </span>
               </label>
-
               <label class="heroRadio">
                 <input type="radio" name="nextPreview" />
                 <span class="heroRadio__ui"></span>
@@ -734,47 +736,13 @@
     </div>
   </section>
 
-  <!-- PROBLEM RECOGNITION -->
-  <section class="section">
-    <div class="container">
-      <h2>If this sounds familiar, you are in the right place.</h2>
-      <p class="lead">
-        Your customer does not call this “rizz.” They describe it as a response problem: people see the work, then vanish.
-      </p>
-
-      <div class="grid3">
-        <div class="card cardPad cardHover">
-          <h3>“People see my stuff but don’t respond.”</h3>
-          <p class="small">Search intent: <em>people see my website but don’t contact me</em></p>
-        </div>
-        <div class="card cardPad cardHover">
-          <h3>“I get traffic but no leads.”</h3>
-          <p class="small">Search intent: <em>traffic but no leads</em> · <em>no inquiries from website</em></p>
-        </div>
-        <div class="card cardPad cardHover">
-          <h3>“I do not know what to do next.”</h3>
-          <p class="small">Search intent: <em>how to get people to take action</em></p>
-        </div>
-      </div>
-
-      <div style="margin-top:18px" class="card cardPad">
-        <p class="small" style="margin:0">
-          Most businesses assume this is a visibility problem. It is usually a response problem.
-          The next step is unclear, risky, or hidden behind friction. When people hesitate, they leave.
-          <br><br>
-          <strong>Rizzry</strong> uses “rizz” as shorthand for response, not charm. The goal is follow-through.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- DIAGNOSTIC -->
+  <!-- 2) ENGAGEMENT — DIAGNOSTIC -->
   <section id="diagnostic" class="section sectionSoft">
     <div class="container">
       <div class="diagWrap">
         <div class="diagHeader">
           <div>
-            <h2>Traffic but no leads? Find the leak in 10 seconds.</h2>
+            <h2>Find the leak in 10 seconds.</h2>
             <p class="lead" style="margin:8px 0 0">Pick the option that matches what happens most often. Then get one clear next move.</p>
           </div>
           <div class="diagMeta">
@@ -793,13 +761,11 @@
           <label class="opt"><input type="radio" name="rizz" value="D"><span><strong>I honestly do not know.</strong></span></label>
           <label class="opt"><input type="radio" name="rizz" value="E"><span><strong>Nothing happens</strong> unless I manually follow up.</span></label>
 
-          <!-- Inline hint replaces alert -->
           <div id="diagHint" class="inlineHint" role="status" aria-live="polite">
             Select one option to see your result.
           </div>
 
           <div class="ctaRow">
-            <!-- Disabled until selection -->
             <button id="showResult" class="btn btnPrimary" type="button" disabled>
               Show my result
               <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -810,240 +776,89 @@
             <span class="small">No forms. No drama. Just the leak and the fix.</span>
           </div>
 
+          <!-- 3) INSIGHT — RESULT -->
           <div id="result" class="result" aria-live="polite"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CHECKLIST (the second step) -->
+  <!-- 3.5) OPTIONAL: CHECKLIST (turn insight into change) -->
   <section id="checklist" class="section">
     <div class="container">
       <div class="checklistWrap">
         <h2>The 10-minute fix checklist</h2>
-        <p class="lead">
-          Use this immediately after your result. The goal is one measurable response improvement, not a redesign.
-        </p>
+        <p class="lead">Use this immediately after your result. The goal is one measurable response improvement, not a redesign.</p>
 
         <div class="checklistSteps">
           <div class="step">
             <p class="stepTitle">Step 1: One primary next step</p>
             <p class="stepBody">Choose one action you want users to take (book, call, request a quote, buy). Remove competing actions above the fold.</p>
           </div>
-
           <div class="step">
             <p class="stepTitle">Step 2: Put proof next to the decision</p>
             <p class="stepBody">Add one specific proof item near the CTA (testimonial with outcome, metric, recognizable client type, before/after).</p>
           </div>
-
           <div class="step">
             <p class="stepTitle">Step 3: Remove one friction point</p>
             <p class="stepBody">Cut one step from the path (click, field, or choice). If the action feels easier, response climbs.</p>
           </div>
         </div>
-
-        <div class="ctaRow" style="margin-top:18px">
-          <a class="btn btnPrimary" href="#diagnostic">Run the diagnostic again</a>
-          <a class="btn btnSecondary" href="#why">Review the common causes</a>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- =========================
-     1) ADD THIS SECTION
-     Place it right after the CHECKLIST section (or right after the DIAGNOSTIC section).
-     ========================= -->
-<section id="submit-url" class="section">
-  <div class="container">
-    <div class="checklistWrap">
-      <h2>Submit your URL</h2>
-      <p class="lead">
-        Share one page that gets traffic but not responses. I will send back a short, specific list of fixes you can apply this week.
-      </p>
+  <!-- 4) CONVERSION PIVOT — URL SUBMISSION -->
+  <section id="submit-url" class="section sectionSoft">
+    <div class="container">
+      <div class="checklistWrap">
+        <h2>Want this applied to your page?</h2>
+        <p class="lead">Submit one URL that gets attention but not action. You will get a short, specific list of fixes you can apply this week.</p>
 
-      <div class="card cardPad" style="max-width:900px;margin:0 auto">
-        <form id="urlForm" novalidate>
-          <label for="siteUrl" style="display:block;font-weight:900;margin-bottom:8px">
-            Page URL
-          </label>
-          <input
-            id="siteUrl"
-            name="siteUrl"
-            type="url"
-            inputmode="url"
-            placeholder="https://example.com/your-page"
-            required
-            style="
-              width:100%;
-              padding:12px 14px;
-              border-radius:14px;
-              border:1px solid rgba(15,23,42,.14);
-              font-size:16px;
-              outline:none;
-            "
-          />
+        <div class="card cardPad">
+          <form id="urlForm" novalidate>
+            <div class="formRow">
+              <label class="fieldLabel" for="siteUrl">Page URL</label>
+              <input class="input" id="siteUrl" name="siteUrl" type="url" inputmode="url" placeholder="https://example.com/your-page" required />
+            </div>
 
-          <p class="small" style="margin:10px 0 0">
-            Optional: include one sentence about what you want visitors to do (book, call, buy, request a quote).
+            <div class="formRow">
+              <label class="fieldLabel" for="goal">Desired action (optional)</label>
+              <input class="input" id="goal" name="goal" type="text" placeholder="Example: Book a consultation call" />
+              <p class="small" style="margin:0">If you leave this blank, the audit assumes “contact or book.”</p>
+            </div>
+
+            <div class="ctaRow">
+              <button id="submitUrlBtn" class="btn btnPrimary" type="submit">
+                Submit URL
+                <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M13 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <a class="btn btnSecondary" href="#diagnostic">Back to diagnostic</a>
+            </div>
+
+            <div id="urlFormHint" class="inlineHint" role="status" aria-live="polite">
+              Enter a valid URL (example: https://yourdomain.com/page).
+            </div>
+
+            <!-- 5) CONFIRMATION & REASSURANCE -->
+            <div id="urlFormConfirm" class="confirmBox" role="status" aria-live="polite">
+              Received.
+              <div class="confirmSmall">
+                What happens next: you will receive a short response audit with specific fixes.
+                If you do not see it, check spam, then resubmit.
+              </div>
+            </div>
+
+            <input type="hidden" name="source" value="rizzry-submit-url" />
+          </form>
+
+          <p class="small" style="margin:12px 0 0">
+            Privacy note: do not submit pages that require login or contain sensitive customer data.
           </p>
-
-          <label for="goal" style="display:block;font-weight:900;margin:10px 0 8px">
-            Desired action (optional)
-          </label>
-          <input
-            id="goal"
-            name="goal"
-            type="text"
-            placeholder="Example: Book a consultation call"
-            style="
-              width:100%;
-              padding:12px 14px;
-              border-radius:14px;
-              border:1px solid rgba(15,23,42,.14);
-              font-size:16px;
-              outline:none;
-            "
-          />
-
-          <div class="ctaRow" style="margin-top:14px">
-            <button id="submitUrlBtn" class="btn btnPrimary" type="submit">
-              Submit URL
-              <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5 12h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                <path d="M13 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-            <a class="btn btnSecondary" href="#diagnostic">Run the diagnostic</a>
-          </div>
-
-          <div id="urlFormHint" class="inlineHint" role="status" aria-live="polite" style="margin-top:12px;display:none">
-            Enter a valid URL (example: https://yourdomain.com/page).
-          </div>
-
-          <div id="urlFormSuccess" class="result" role="status" aria-live="polite" style="display:none">
-            <h3>Received.</h3>
-            <p>I have your URL. If you do not hear back, check spam, then resubmit with a different email route.</p>
-          </div>
-
-          <!-- Replace this with your real endpoint (Make webhook, Netlify form handler, etc.) -->
-          <input type="hidden" name="source" value="rizzry-submit-url" />
-        </form>
-
-        <p class="small" style="margin:12px 0 0">
-          Privacy note: Do not submit pages that require login or contain sensitive customer data.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-  <!-- WHAT YOU GET -->
-  <section id="what-you-get" class="section">
-    <div class="container">
-      <h2>What you get immediately</h2>
-      <p class="lead">A plain-English diagnosis and one implementable move. Not a 34-step “growth framework” that you will ignore by Thursday.</p>
-
-      <div class="grid3">
-        <div class="card cardPad cardHover">
-          <div class="iconBox" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M4 6h16M4 12h10M4 18h14" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>Your response type</h3>
-          <p class="small">A clear label for what is happening, so you stop guessing.</p>
         </div>
-
-        <div class="card cardPad cardHover">
-          <div class="iconBox" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M12 3v18M3 12h18" stroke-width="2" stroke-linecap="round"/>
-              <path d="M7 7l10 10" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>The likely leak</h3>
-          <p class="small">Clarity, trust, friction, or follow-up. Usually one is doing the damage.</p>
-        </div>
-
-        <div class="card cardPad cardHover">
-          <div class="iconBox" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M7 12l3 3 7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M21 12a9 9 0 1 1-6-8.5" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>One fix to run this week</h3>
-          <p class="small">A single action that moves response without rebuilding your business.</p>
-        </div>
-      </div>
-
-      <div style="margin-top:18px" class="grid3">
-        <div class="card cardPad cardHover">
-          <p class="metric">Clear next step</p>
-          <p class="small">One primary action, visible in one pass.</p>
-        </div>
-        <div class="card cardPad cardHover">
-          <p class="metric">Lower friction</p>
-          <p class="small">Fewer clicks, fewer fields, fewer choices.</p>
-        </div>
-        <div class="card cardPad cardHover">
-          <p class="metric">Stronger trust</p>
-          <p class="small">Specific proof positioned near the decision.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY IT HAPPENS -->
-  <section id="why" class="section sectionSoft">
-    <div class="container">
-      <h2>Why website visitors do not convert</h2>
-      <p class="lead">
-        If you are getting traffic but no leads, one of these is usually responsible. This section is intentionally written
-        to match what people actually search.
-      </p>
-
-      <div class="grid3">
-        <div class="card cardPad cardHover">
-          <h3>The next step is unclear</h3>
-          <p class="small">If the action is not obvious immediately, response drops.</p>
-        </div>
-        <div class="card cardPad cardHover">
-          <h3>The offer is fuzzy</h3>
-          <p class="small">If they cannot describe what you do, they will not commit.</p>
-        </div>
-        <div class="card cardPad cardHover">
-          <h3>Trust signals are thin</h3>
-          <p class="small">Specific proof beats generic claims. Without it, hesitation wins.</p>
-        </div>
-        <div class="card cardPad cardHover">
-          <h3>Friction is high</h3>
-          <p class="small">Too many clicks or form fields turns interest into abandonment.</p>
-        </div>
-        <div class="card cardPad cardHover">
-          <h3>Follow-up is manual</h3>
-          <p class="small">If it depends on you remembering, it breaks under load.</p>
-        </div>
-        <div class="card cardPad cardHover">
-          <h3>You cannot see the drop-off</h3>
-          <p class="small">If you do not track the next step, you cannot improve it.</p>
-        </div>
-      </div>
-
-      <div class="ctaRow" style="margin-top:18px">
-        <a class="btn btnPrimary" href="#diagnostic">
-          Run the 10-second diagnostic
-          <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M5 12h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
-            <path d="M13 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <span class="small">Fastest way to pinpoint your category.</span>
       </div>
     </div>
   </section>
@@ -1066,7 +881,7 @@
 
       <details>
         <summary>Why call it “rizz” at all?</summary>
-        <p>Because it is memorable. We use it as shorthand for response, not charisma. The goal is follow-through, not performance.</p>
+        <p>We use it as shorthand for response, not charisma. The goal is follow-through, not performance.</p>
       </details>
 
       <details>
@@ -1100,35 +915,44 @@
     // Footer year
     document.getElementById("yr").textContent = new Date().getFullYear();
 
+    // ======== 2) ENGAGEMENT → 3) INSIGHT ========
     const resultEl = document.getElementById("result");
     const btn = document.getElementById("showResult");
     const hintEl = document.getElementById("diagHint");
+
+    // ======== 4) CONVERSION PIVOT ========
+    const submitSection = document.getElementById("submit-url");
+    const urlForm = document.getElementById("urlForm");
+    const urlHint = document.getElementById("urlFormHint");
+    const urlConfirm = document.getElementById("urlFormConfirm");
+    const siteUrlInput = document.getElementById("siteUrl");
+    const goalInput = document.getElementById("goal");
 
     const results = {
       A: {
         title: "Result: Your system creates response.",
         body: "People take a next step without you pushing them. Your opportunity is consistency and scale: tighten one path and replicate it.",
-        hint: "Next move: choose one primary conversion path and measure it weekly."
+        hint: "Choose one primary conversion path and measure it weekly."
       },
       B: {
         title: "Result: Response is inconsistent.",
         body: "Some people engage, but most disappear. This usually points to an unclear next step or a trust gap at the moment of decision.",
-        hint: "Next move: rewrite one CTA into a single, concrete action and put proof beside it."
+        hint: "Rewrite one CTA into a single, concrete action and put proof beside it."
       },
       C: {
         title: "Result: You have attention, not response.",
         body: "People consume content but rarely act. This often means the next step feels risky, unclear, or not worth the effort.",
-        hint: "Next move: reduce friction (fewer clicks/fields) and make the action obvious in one pass."
+        hint: "Remove friction and make one action obvious in one pass."
       },
       D: {
         title: "Result: You cannot see the system.",
         body: "If you cannot observe the next step, you cannot improve it. Uncertainty becomes permanent and response cannot compound.",
-        hint: "Next move: define one measurable next step (click, submit, book) and track it."
+        hint: "Define one measurable next step and track it."
       },
       E: {
         title: "Result: You are doing all the follow-through manually.",
         body: "The business works when you chase it. That is effective in the short term and fragile long term.",
-        hint: "Next move: build one follow-up loop that runs without you (auto-reply + calendar link, or a simple nurture sequence)."
+        hint: "Build one follow-up loop that runs without you."
       }
     };
 
@@ -1145,22 +969,20 @@
     // Start disabled; show inline guidance until they pick.
     setButtonState();
 
-    // Enable when any option changes + add selected styling.
+    // Enable on selection + add selected styling.
     document.querySelectorAll("input[name='rizz']").forEach((input) => {
       input.addEventListener("change", () => {
         setButtonState();
-
-        // Visual selected state on label rows
         document.querySelectorAll(".opt").forEach((lbl) => lbl.classList.remove("isSelected"));
         const selectedLabel = input.closest(".opt");
         if (selectedLabel) selectedLabel.classList.add("isSelected");
       });
     });
 
+    // 3) INSIGHT — show result, then immediately offer 4) URL submission.
     btn.addEventListener("click", () => {
       const picked = getPicked();
       if (!picked) {
-        // No alert. Just guidance.
         setButtonState();
         resultEl.style.display = "none";
         return;
@@ -1172,16 +994,59 @@
       resultEl.innerHTML =
         "<h3>" + r.title + "</h3>" +
         "<p>" + r.body + "</p>" +
-        "<p style='margin-top:10px'><strong>Next move:</strong> <span style='color:var(--slate)'>" +
-        r.hint.replace("Next move: ", "") +
-        "</span></p>" +
+        "<p style='margin-top:10px'><strong>Next move:</strong> <span style='color:var(--slate)'>" + r.hint + "</span></p>" +
         "<div class='resultActions'>" +
-          "<a class='btn btnPrimary' href='#checklist'>Open the 10-minute checklist</a>" +
-          "<a class='btn btnSecondary' href='#why'>See the likely cause</a>" +
+          "<a class='btn btnPrimary' href='#submit-url'>Apply this to my page (submit URL)</a>" +
+          "<a class='btn btnSecondary' href='#checklist'>Open the 10-minute checklist</a>" +
         "</div>" +
-        "<div class='resultNote'>If you want this to generate leads, the checklist is your “second step.” It turns insight into a change you can ship today.</div>";
+        "<div class='resultNote'>Critical moment: do not stop at insight. If you want this applied to your page, submit the URL next.</div>";
 
       resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    // ======== 4) URL SUBMISSION → 5) CONFIRMATION ========
+
+    function isValidHttpUrl(value) {
+      try {
+        const u = new URL(value);
+        return u.protocol === "http:" || u.protocol === "https:";
+      } catch (_) {
+        return false;
+      }
+    }
+
+    urlForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      urlHint.style.display = "none";
+      urlConfirm.style.display = "none";
+
+      const urlValue = (siteUrlInput.value || "").trim();
+      const goalValue = (goalInput.value || "").trim();
+
+      if (!isValidHttpUrl(urlValue)) {
+        urlHint.style.display = "block";
+        siteUrlInput.focus();
+        return;
+      }
+
+      // Replace this with your real endpoint (Make webhook, etc.)
+      // Example:
+      // const ENDPOINT = "https://hook.us1.make.com/xxxxxxxxxxxx";
+      // await fetch(ENDPOINT, {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ siteUrl: urlValue, goal: goalValue, source: "rizzry-submit-url" })
+      // });
+
+      // For now, show confirmation only (no network call).
+      urlConfirm.style.display = "block";
+
+      // Optional: clear fields after confirmation
+      // siteUrlInput.value = "";
+      // goalInput.value = "";
+
+      urlConfirm.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   </script>
 </body>
