@@ -23,12 +23,9 @@
       --surface2:#F7F8FB;
 
       --accent:#6D28D9;
-      --accent2:#A78BFA;      /* added (used by hero gradient) */
+      --accent2:#A78BFA;
       --accentHover:#5B21B6;
       --accentSoft:#EDE9FE;
-
-      --success:#16A34A;
-      --warn:#F59E0B;
 
       --shadow: 0 10px 30px rgba(15,23,42,.08);
       --shadowHover: 0 14px 38px rgba(15,23,42,.12);
@@ -36,12 +33,13 @@
       --radiusCard:22px;
       --radiusBtn:12px;
 
-      /* added for the modern hero block */
       --bg:#FFFFFF;
       --muted: var(--slate);
       --soft: rgba(15,23,42,.10);
       --radius: var(--radiusCard);
       --card: rgba(255,255,255,.92);
+
+      --focusRing: 0 0 0 4px rgba(109,40,217,.18);
     }
 
     *{box-sizing:border-box}
@@ -99,7 +97,7 @@
       text-decoration:none;
       font-weight:800;
       cursor:pointer;
-      transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease, opacity .15s ease;
       white-space:nowrap;
     }
     .btnPrimary{
@@ -109,6 +107,7 @@
       border-color: rgba(109,40,217,.28);
     }
     .btnPrimary:hover{background:var(--accentHover);transform: translateY(-1px)}
+    .btnPrimary:disabled{opacity:.55;cursor:not-allowed;transform:none}
     .btnSecondary{
       background:#fff;
       color:var(--accent);
@@ -127,6 +126,13 @@
       transition: transform .15s ease;
     }
     .btn:hover .arrow{transform: translateX(2px)}
+
+    .btn:focus-visible,
+    .opt:focus-within,
+    summary:focus-visible{
+      outline:none;
+      box-shadow: var(--focusRing);
+    }
 
     /* Sections */
     .section{padding:84px 0}
@@ -179,11 +185,12 @@
       background: rgba(255,255,255,.95);
       margin-bottom:10px;
       cursor:pointer;
-      transition: transform .15s ease, box-shadow .15s ease;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
     }
     .opt:hover{transform: translateY(-1px);box-shadow: 0 10px 24px rgba(15,23,42,.08)}
     .opt input{margin-top:3px}
     .opt span{color:var(--slate);line-height:1.55}
+    .opt.isSelected{border-color: rgba(109,40,217,.30)}
     .result{
       display:none;
       margin-top:14px;
@@ -196,6 +203,20 @@
     .result p{margin:0;color:var(--slate);line-height:1.6}
 
     .ctaRow{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:18px}
+
+    /* Inline hint (replaces alert) */
+    .inlineHint{
+      display:none;
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      background: rgba(245,158,11,.10);
+      border:1px solid rgba(245,158,11,.22);
+      color: rgba(93,63,0,.95);
+      font-size:13px;
+      font-weight:700;
+      line-height:1.4;
+    }
 
     /* Feature cards */
     .metric{
@@ -262,21 +283,82 @@
       font-size: clamp(34px, 4.2vw, 54px);
       line-height: 1.06;
       letter-spacing: -0.02em;
-      margin:0 0 14px 0;
+      margin:0 0 10px 0;
     }
     .heroModern__accent{color: var(--accent)}
+    .heroModern__definition{
+      margin: 0 0 14px 0;
+      color: rgba(11,18,32,.82);
+      font-size: 14px;
+      line-height: 1.5;
+      max-width: 70ch;
+    }
+    .heroModern__definition strong{font-weight:900}
     .heroModern__lead{
       font-size:16px;
       line-height:1.6;
       color: var(--muted);
       max-width:54ch;
-      margin:0 0 22px 0;
+      margin:0 0 16px 0;
     }
+
+    /* Sample output (above the fold proof) */
+    .sampleBox{
+      margin-top: 14px;
+      padding: 14px 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(109,40,217,.16);
+      background: linear-gradient(180deg, rgba(109,40,217,.05), rgba(237,233,254,.28));
+    }
+    .sampleTop{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+    .sampleLabel{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:12px;font-weight:900;color:var(--accent);
+      letter-spacing:.2px;
+      text-transform:uppercase;
+    }
+    .samplePill{
+      font-size:12px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.75);
+      color: rgba(11,18,32,.78);
+      white-space:nowrap;
+      font-weight:850;
+    }
+    .sampleGrid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+    }
+    .sampleRow{
+      border-radius:14px;
+      border:1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.85);
+      padding:10px 12px;
+    }
+    .sampleRow strong{display:block;margin:0 0 2px;font-weight:950}
+    .sampleRow span{display:block;color:var(--slate);font-size:13px;line-height:1.5}
+    .sampleFix{
+      border-radius:14px;
+      border:1px dashed rgba(109,40,217,.28);
+      background: rgba(255,255,255,.68);
+      padding:10px 12px;
+    }
+    .sampleFixTitle{font-weight:950;color:rgba(11,18,32,.90);margin:0 0 4px}
+    .sampleFixList{margin:0;padding-left:18px;color:var(--slate);font-size:13px;line-height:1.55}
+    .sampleFixList li{margin:4px 0}
+
     .heroModern__ctaRow{
       display:flex;
       gap:18px;
       align-items:center;
       flex-wrap:wrap;
+      margin-top: 14px;
       margin-bottom:16px;
     }
     .heroModern__micro{
@@ -440,6 +522,41 @@
       margin-top:3px;
     }
 
+    /* Result actions */
+    .resultActions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:12px;
+    }
+    .resultNote{
+      font-size:13px;
+      color: var(--slate);
+      line-height:1.55;
+      max-width: 70ch;
+    }
+
+    /* Checklist section */
+    .checklistWrap{
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .checklistSteps{
+      display:grid;
+      gap:12px;
+      margin-top: 12px;
+    }
+    .step{
+      border-radius:16px;
+      border:1px solid var(--border);
+      background:#fff;
+      padding:14px 14px;
+      box-shadow: 0 10px 24px rgba(15,23,42,.05);
+    }
+    .stepTitle{margin:0 0 6px;font-weight:950}
+    .stepBody{margin:0;color:var(--slate);line-height:1.6}
+
     @media (max-width: 980px){
       .heroModern__grid{grid-template-columns:1fr}
       .heroModern__visual{min-height:460px}
@@ -447,6 +564,14 @@
       .figure{right:16px; top:52px; transform: scale(.95)}
       .heroCard{left:0; right:0; margin:0 auto}
     }
+
+    
+  #siteUrl:focus-visible,
+  #goal:focus-visible{
+    box-shadow: var(--focusRing);
+    border-color: rgba(109,40,217,.35);
+  }
+
   </style>
 </head>
 
@@ -478,7 +603,7 @@
         </div>
 
         <div class="navCtas">
-          <a class="btn btnGhost" href="#why">See causes</a>
+          <!-- Removed competing CTA button: “See causes” -->
           <a class="btn btnPrimary" href="#diagnostic">
             Take the 10-second check
             <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -503,10 +628,39 @@
             <span class="heroModern__accent">nothing happens next</span>.
           </h1>
 
+          <!-- Moved brand definition up (one-line translation) -->
+          <p class="heroModern__definition">
+            <strong>Rizzry</strong> is a response diagnostic: one question, one fix.
+          </p>
+
           <p class="heroModern__lead">
             You are getting views, traffic, or attention. What you are not getting is replies, bookings, or momentum.
             The usual culprit is uncertainty paired with low response.
           </p>
+
+          <!-- Above-the-fold proof: sample output -->
+          <div class="sampleBox" aria-label="Sample output preview">
+            <div class="sampleTop">
+              <div class="sampleLabel">Sample output</div>
+              <span class="samplePill">What you will see</span>
+            </div>
+
+            <div class="sampleGrid">
+              <div class="sampleRow">
+                <strong>Result: Response is inconsistent.</strong>
+                <span>Some people engage, but most disappear. This points to a clarity or trust gap at the moment of decision.</span>
+              </div>
+
+              <div class="sampleFix">
+                <div class="sampleFixTitle">One fix you can run this week</div>
+                <ul class="sampleFixList">
+                  <li>Rewrite your primary CTA into one concrete action (not “Learn more”).</li>
+                  <li>Place one specific proof item next to it (testimonial, metric, before/after).</li>
+                  <li>Remove one friction point (extra click, extra form field, extra choice).</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
           <div class="heroModern__ctaRow">
             <a class="btn btnPrimary" href="#diagnostic">Run the 10-second diagnostic</a>
@@ -518,7 +672,7 @@
 
           <ul class="heroModern__bullets" aria-label="Key points">
             <li>Built for organic intent, not buzzwords</li>
-            <li>Fits common use cases</li>
+            <li>One improvement at a time, measured in response</li>
           </ul>
 
           <div class="heroModern__chips" aria-label="Common use cases">
@@ -531,6 +685,7 @@
           </div>
         </div>
 
+        <!-- Decorative hero visual -->
         <div class="heroModern__visual" aria-hidden="true">
           <div class="blob"></div>
 
@@ -638,8 +793,14 @@
           <label class="opt"><input type="radio" name="rizz" value="D"><span><strong>I honestly do not know.</strong></span></label>
           <label class="opt"><input type="radio" name="rizz" value="E"><span><strong>Nothing happens</strong> unless I manually follow up.</span></label>
 
+          <!-- Inline hint replaces alert -->
+          <div id="diagHint" class="inlineHint" role="status" aria-live="polite">
+            Select one option to see your result.
+          </div>
+
           <div class="ctaRow">
-            <button id="showResult" class="btn btnPrimary" type="button">
+            <!-- Disabled until selection -->
+            <button id="showResult" class="btn btnPrimary" type="button" disabled>
               Show my result
               <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
@@ -654,6 +815,132 @@
       </div>
     </div>
   </section>
+
+  <!-- CHECKLIST (the second step) -->
+  <section id="checklist" class="section">
+    <div class="container">
+      <div class="checklistWrap">
+        <h2>The 10-minute fix checklist</h2>
+        <p class="lead">
+          Use this immediately after your result. The goal is one measurable response improvement, not a redesign.
+        </p>
+
+        <div class="checklistSteps">
+          <div class="step">
+            <p class="stepTitle">Step 1: One primary next step</p>
+            <p class="stepBody">Choose one action you want users to take (book, call, request a quote, buy). Remove competing actions above the fold.</p>
+          </div>
+
+          <div class="step">
+            <p class="stepTitle">Step 2: Put proof next to the decision</p>
+            <p class="stepBody">Add one specific proof item near the CTA (testimonial with outcome, metric, recognizable client type, before/after).</p>
+          </div>
+
+          <div class="step">
+            <p class="stepTitle">Step 3: Remove one friction point</p>
+            <p class="stepBody">Cut one step from the path (click, field, or choice). If the action feels easier, response climbs.</p>
+          </div>
+        </div>
+
+        <div class="ctaRow" style="margin-top:18px">
+          <a class="btn btnPrimary" href="#diagnostic">Run the diagnostic again</a>
+          <a class="btn btnSecondary" href="#why">Review the common causes</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+     1) ADD THIS SECTION
+     Place it right after the CHECKLIST section (or right after the DIAGNOSTIC section).
+     ========================= -->
+<section id="submit-url" class="section">
+  <div class="container">
+    <div class="checklistWrap">
+      <h2>Submit your URL</h2>
+      <p class="lead">
+        Share one page that gets traffic but not responses. I will send back a short, specific list of fixes you can apply this week.
+      </p>
+
+      <div class="card cardPad" style="max-width:900px;margin:0 auto">
+        <form id="urlForm" novalidate>
+          <label for="siteUrl" style="display:block;font-weight:900;margin-bottom:8px">
+            Page URL
+          </label>
+          <input
+            id="siteUrl"
+            name="siteUrl"
+            type="url"
+            inputmode="url"
+            placeholder="https://example.com/your-page"
+            required
+            style="
+              width:100%;
+              padding:12px 14px;
+              border-radius:14px;
+              border:1px solid rgba(15,23,42,.14);
+              font-size:16px;
+              outline:none;
+            "
+          />
+
+          <p class="small" style="margin:10px 0 0">
+            Optional: include one sentence about what you want visitors to do (book, call, buy, request a quote).
+          </p>
+
+          <label for="goal" style="display:block;font-weight:900;margin:10px 0 8px">
+            Desired action (optional)
+          </label>
+          <input
+            id="goal"
+            name="goal"
+            type="text"
+            placeholder="Example: Book a consultation call"
+            style="
+              width:100%;
+              padding:12px 14px;
+              border-radius:14px;
+              border:1px solid rgba(15,23,42,.14);
+              font-size:16px;
+              outline:none;
+            "
+          />
+
+          <div class="ctaRow" style="margin-top:14px">
+            <button id="submitUrlBtn" class="btn btnPrimary" type="submit">
+              Submit URL
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <path d="M13 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <a class="btn btnSecondary" href="#diagnostic">Run the diagnostic</a>
+          </div>
+
+          <div id="urlFormHint" class="inlineHint" role="status" aria-live="polite" style="margin-top:12px;display:none">
+            Enter a valid URL (example: https://yourdomain.com/page).
+          </div>
+
+          <div id="urlFormSuccess" class="result" role="status" aria-live="polite" style="display:none">
+            <h3>Received.</h3>
+            <p>I have your URL. If you do not hear back, check spam, then resubmit with a different email route.</p>
+          </div>
+
+          <!-- Replace this with your real endpoint (Make webhook, Netlify form handler, etc.) -->
+          <input type="hidden" name="source" value="rizzry-submit-url" />
+        </form>
+
+        <p class="small" style="margin:12px 0 0">
+          Privacy note: Do not submit pages that require login or contain sensitive customer data.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
 
   <!-- WHAT YOU GET -->
   <section id="what-you-get" class="section">
@@ -815,6 +1102,7 @@
 
     const resultEl = document.getElementById("result");
     const btn = document.getElementById("showResult");
+    const hintEl = document.getElementById("diagHint");
 
     const results = {
       A: {
@@ -844,20 +1132,55 @@
       }
     };
 
+    function getPicked() {
+      return document.querySelector("input[name='rizz']:checked");
+    }
+
+    function setButtonState() {
+      const picked = getPicked();
+      btn.disabled = !picked;
+      hintEl.style.display = picked ? "none" : "block";
+    }
+
+    // Start disabled; show inline guidance until they pick.
+    setButtonState();
+
+    // Enable when any option changes + add selected styling.
+    document.querySelectorAll("input[name='rizz']").forEach((input) => {
+      input.addEventListener("change", () => {
+        setButtonState();
+
+        // Visual selected state on label rows
+        document.querySelectorAll(".opt").forEach((lbl) => lbl.classList.remove("isSelected"));
+        const selectedLabel = input.closest(".opt");
+        if (selectedLabel) selectedLabel.classList.add("isSelected");
+      });
+    });
+
     btn.addEventListener("click", () => {
-      const picked = document.querySelector("input[name='rizz']:checked");
+      const picked = getPicked();
       if (!picked) {
-        alert("Select one option to see your result.");
+        // No alert. Just guidance.
+        setButtonState();
+        resultEl.style.display = "none";
         return;
       }
+
       const r = results[picked.value];
+
       resultEl.style.display = "block";
       resultEl.innerHTML =
         "<h3>" + r.title + "</h3>" +
         "<p>" + r.body + "</p>" +
         "<p style='margin-top:10px'><strong>Next move:</strong> <span style='color:var(--slate)'>" +
         r.hint.replace("Next move: ", "") +
-        "</span></p>";
+        "</span></p>" +
+        "<div class='resultActions'>" +
+          "<a class='btn btnPrimary' href='#checklist'>Open the 10-minute checklist</a>" +
+          "<a class='btn btnSecondary' href='#why'>See the likely cause</a>" +
+        "</div>" +
+        "<div class='resultNote'>If you want this to generate leads, the checklist is your “second step.” It turns insight into a change you can ship today.</div>";
+
       resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   </script>
