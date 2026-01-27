@@ -355,6 +355,320 @@
     }
     summary{cursor:pointer;font-weight:850;color:var(--ink)}
     details p{margin:10px 0 0;color:var(--slate);line-height:1.6}
+    .hero{
+    background: radial-gradient(1200px 600px at 20% 10%, rgba(255,157,0,.10), transparent 60%),
+                radial-gradient(900px 520px at 80% 25%, rgba(255,106,42,.10), transparent 62%),
+                var(--bg);
+    color: var(--ink);
+    padding: clamp(36px, 5vw, 74px) 18px;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+  }
+
+  .hero__wrap{
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .hero__grid{
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: clamp(22px, 4vw, 56px);
+    align-items: center;
+  }
+
+  .hero__eyebrow{
+    display: inline-block;
+    padding: 10px 14px;
+    border: 1px solid var(--soft);
+    background: rgba(255,255,255,.55);
+    border-radius: 999px;
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 14px 0;
+  }
+
+  .hero__title{
+    font-size: clamp(34px, 4.2vw, 54px);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    margin: 0 0 14px 0;
+  }
+
+  .hero__accent{
+    color: var(--accent);
+  }
+
+  .hero__lead{
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 54ch;
+    margin: 0 0 22px 0;
+  }
+
+  .hero__ctaRow{
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: .01em;
+    border: 1px solid transparent;
+    box-shadow: 0 18px 40px rgba(255,106,42,.24);
+  }
+
+  .btn--primary{
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    color: white;
+  }
+
+  .btn--primary:hover{ filter: brightness(.98); transform: translateY(-1px); }
+  .btn--primary:active{ transform: translateY(0px); }
+
+  .hero__micro{
+    display: grid;
+    gap: 6px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.55);
+    border: 1px solid var(--soft);
+  }
+
+  .microLine{
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .microLine::before{
+    content:"";
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: rgba(255,106,42,.8);
+    box-shadow: 0 0 0 3px rgba(255,106,42,.12);
+  }
+
+  .hero__bullets{
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px 0;
+    display: grid;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .hero__bullets li{
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .hero__bullets li::before{
+    content:"✓";
+    color: var(--accent);
+    font-weight: 900;
+    margin-top: 1px;
+  }
+
+  .hero__chips{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .chip{
+    font-size: 13px;
+    color: rgba(20,19,23,.78);
+    border: 1px solid var(--soft);
+    background: rgba(255,255,255,.55);
+    padding: 9px 12px;
+    border-radius: 999px;
+  }
+
+  /* RIGHT SIDE VISUAL */
+  .hero__visual{
+    position: relative;
+    min-height: 420px;
+  }
+
+  .blob{
+    position: absolute;
+    inset: 26px 10px auto auto;
+    width: min(430px, 100%);
+    height: 340px;
+    border-radius: 220px;
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    filter: saturate(1.05);
+    box-shadow: 0 30px 90px rgba(255,106,42,.22);
+    transform: rotate(-10deg);
+  }
+
+  /* Simple figure placeholder (swap with a real image if you want) */
+  .figure{
+    position: absolute;
+    right: 34px;
+    top: 68px;
+    width: 220px;
+    height: 260px;
+  }
+
+  .figure__head{
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: rgba(20,19,23,.15);
+    position: absolute;
+    right: 68px; top: 10px;
+  }
+
+  .figure__body{
+    width: 140px; height: 160px;
+    border-radius: 32px;
+    background: rgba(255,255,255,.55);
+    border: 1px solid rgba(255,255,255,.45);
+    position: absolute;
+    right: 40px; top: 70px;
+    box-shadow: 0 18px 50px rgba(20,19,23,.10);
+  }
+
+  .figure__laptop{
+    width: 170px; height: 110px;
+    border-radius: 18px;
+    background: rgba(20,19,23,.18);
+    position: absolute;
+    right: 18px; top: 148px;
+  }
+
+  .card{
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    width: min(360px, 92%);
+    background: var(--card);
+    border: 1px solid rgba(20,19,23,.10);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px;
+    backdrop-filter: blur(10px);
+  }
+
+  .card__top{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .card__kicker{
+    font-weight: 800;
+    letter-spacing: .01em;
+    margin-bottom: 3px;
+  }
+
+  .card__meta{
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .pill{
+    font-size: 12px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--soft);
+    background: rgba(255,255,255,.55);
+    color: rgba(20,19,23,.78);
+    white-space: nowrap;
+  }
+
+  .card__q{
+    font-size: 14px;
+    line-height: 1.45;
+    color: rgba(20,19,23,.86);
+    margin: 10px 0 12px 0;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(20,19,23,.04);
+    border: 1px solid rgba(20,19,23,.06);
+  }
+
+  .card__answers{
+    display: grid;
+    gap: 10px;
+  }
+
+  .radio{
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(20,19,23,.08);
+    background: rgba(255,255,255,.62);
+    cursor: pointer;
+  }
+
+  .radio input{
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .radio__ui{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid rgba(20,19,23,.18);
+    margin-top: 2px;
+    background: white;
+    box-shadow: inset 0 0 0 4px white;
+  }
+
+  .radio input:checked + .radio__ui{
+    border-color: rgba(255,106,42,.55);
+    box-shadow: inset 0 0 0 4px white, 0 0 0 4px rgba(255,106,42,.14);
+    background: rgba(255,106,42,.20);
+  }
+
+  .radio__text{
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .radio__sub{
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 980px){
+    .hero__grid{ grid-template-columns: 1fr; }
+    .hero__visual{ min-height: 460px; }
+    .blob{ inset: 10px 0 auto auto; width: 100%; height: 300px; transform: rotate(-8deg); }
+    .figure{ right: 16px; top: 52px; transform: scale(.95); }
+    .card{ left: 0; right: 0; margin: 0 auto; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .btn--primary:hover, .btn--primary:active{ transform: none; }
+  }
+
   </style>
 </head>
 
@@ -400,57 +714,96 @@
     </div>
   </div>
 
-  <!-- HERO -->
-  <main id="top" class="heroStage">
-    <div class="container">
-      <div class="hero">
-        <div>
-          <div class="kicker">
-            <span style="display:inline-flex;align-items:center;gap:8px">
-              <span class="dot"></span>
-              For solo businesses with traffic but no leads
-            </span>
-          </div>
+ <!-- HERO) -->
+<section class="hero">
+  <div class="hero__wrap">
+    <div class="hero__grid">
+      <!-- LEFT: Copy -->
+      <div class="hero__copy">
+        <p class="hero__eyebrow">For solo businesses with traffic but no leads</p>
 
-          <h1>People see your work, but nothing happens next.</h1>
+        <h1 class="hero__title">
+          People see your work, but
+          <span class="hero__accent">nothing happens next</span>.
+        </h1>
 
-          <p class="sub">
-            You are getting views, traffic, or attention. What you are not getting is replies, bookings, or momentum.
-            The usual culprit is uncertainty paired with low response.
-          </p>
+        <p class="hero__lead">
+          You are getting views, traffic, or attention. What you are not getting is replies, bookings, or momentum.
+          The usual culprit is uncertainty paired with low response.
+        </p>
 
-          <div class="ctaRow">
-            <a class="btn btnPrimary" href="#diagnostic">
-              Run the 10-second diagnostic
-              <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5 12h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                <path d="M13 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-            <a class="btn btnSecondary" href="#why">Why “traffic but no leads” happens</a>
-          </div>
-
-          <div class="trustRow">
-            <span class="badge"><span class="dot dot2"></span>No email required to see your result</span>
-            <span class="badge"><span class="dot dot3"></span>One question. One next step.</span>
-            <span class="badge"><span class="dot"></span>Built for organic intent, not buzzwords</span>
-          </div>
-
-          <div class="proofStrip" aria-label="Category proof strip">
-            <div class="proofLeft">
-              <span class="dot"></span>
-              <span>Fits common use cases</span>
-            </div>
-            <div class="logos" aria-label="Use case categories">
-              <span class="logoPill">Consultants</span>
-              <span class="logoPill">Local Services</span>
-              <span class="logoPill">Coaches</span>
-              <span class="logoPill">Creators</span>
-              <span class="logoPill">Real Estate</span>
-              <span class="logoPill">Beauty Pros</span>
-            </div>
+        <div class="hero__ctaRow">
+          <a class="btn btn--primary" href="#diagnostic">Run the 10-second diagnostic</a>
+          <div class="hero__micro">
+            <div class="microLine">No email required to see your result</div>
+            <div class="microLine">One question. One next step.</div>
           </div>
         </div>
+
+        <ul class="hero__bullets" aria-label="Key points">
+          <li>Built for organic intent, not buzzwords</li>
+          <li>Fits common use cases</li>
+        </ul>
+
+        <div class="hero__chips" aria-label="Common use cases">
+          <span class="chip">Consultants</span>
+          <span class="chip">Local Services</span>
+          <span class="chip">Coaches</span>
+          <span class="chip">Creators</span>
+          <span class="chip">Real Estate</span>
+          <span class="chip">Beauty Pros</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: Visual -->
+      <div class="hero__visual" aria-hidden="true">
+        <div class="blob"></div>
+
+        <!-- Optional person/illustration placeholder -->
+        <div class="figure">
+          <div class="figure__head"></div>
+          <div class="figure__body"></div>
+          <div class="figure__laptop"></div>
+        </div>
+
+        <!-- Card -->
+        <div class="card">
+          <div class="card__top">
+            <div>
+              <div class="card__kicker">Response Diagnostic</div>
+              <div class="card__meta">10 seconds · 1 question</div>
+            </div>
+            <span class="pill">Preview</span>
+          </div>
+
+          <div class="card__q">
+            When someone discovers your business, what reliably happens next?
+          </div>
+
+          <div class="card__answers">
+            <label class="radio">
+              <input type="radio" name="next" checked />
+              <span class="radio__ui"></span>
+              <span class="radio__text">
+                They take a clear next step.
+                <span class="radio__sub">Low friction. Strong path.</span>
+              </span>
+            </label>
+
+            <label class="radio">
+              <input type="radio" name="next" />
+              <span class="radio__ui"></span>
+              <span class="radio__text">
+                Some engage, most disappear.
+                <span class="radio__sub">Usually clarity or trust gap.</span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
         <!-- Product mock (instead of stock photo) -->
         <div class="mock" aria-label="Rizzry diagnostic preview">
