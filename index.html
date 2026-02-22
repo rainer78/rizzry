@@ -1,1003 +1,341 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <title>Traffic but No Leads? Find Why People See Your Work but Don’t Respond | Rizzry</title>
-  <meta name="description" content="If people visit your site but don’t reply, book, or buy, the problem isn’t visibility. Run a 10-second diagnostic to find the leak and get a clear next step." />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://rizzry.com/" />
-
-  <meta property="og:title" content="Traffic but No Leads? Why People See Your Work but Don’t Respond" />
-  <meta property="og:description" content="A 10-second diagnostic for solo businesses: identify why people see your work but do not respond, and get one practical fix." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://rizzry.com/" />
-
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rizzry - Build Confidence</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Syne:wght@700;800&amp;display=swap" rel="stylesheet">
   <style>
-    :root{
-      --ink:#0B1220;
-      --slate:#556176;
-      --border:rgba(15,23,42,.10);
-      --surface:#FFFFFF;
-      --surface2:#F7F8FB;
-
-      --accent:#6D28D9;
-      --accent2:#A78BFA;
-      --accentHover:#5B21B6;
-      --accentSoft:#EDE9FE;
-
-      --shadow: 0 10px 30px rgba(15,23,42,.08);
-      --shadowHover: 0 14px 38px rgba(15,23,42,.12);
-
-      --radiusCard:22px;
-      --radiusBtn:12px;
-
-      --bg:#FFFFFF;
-      --muted: var(--slate);
-      --soft: rgba(15,23,42,.10);
-      --radius: var(--radiusCard);
-      --card: rgba(255,255,255,.92);
-
-      --focusRing: 0 0 0 4px rgba(109,40,217,.18);
+    * { box-sizing: border-box; }
+    
+    .font-display { font-family: 'Syne', sans-serif; }
+    .font-body { font-family: 'Space Grotesk', sans-serif; }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(2deg); }
     }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      color:var(--ink);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background:#fff;
+    
+    @keyframes float-delayed {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(-2deg); }
     }
-
-    a{color:inherit}
-    .container{max-width:1120px;margin:0 auto;padding:0 24px}
-
-    /* Top nav */
-    .navWrap{
-      position:sticky;top:0;z-index:50;
-      background:rgba(255,255,255,.86);
-      backdrop-filter: blur(10px);
-      border-bottom:1px solid var(--border);
+    
+    @keyframes gentle-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
     }
-    .nav{
-      height:74px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
+    
+    @keyframes wave {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(15deg); }
     }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      text-decoration:none;
-      font-weight:800;
-      letter-spacing:.2px;
+    
+    .float-1 { animation: float 4s ease-in-out infinite; }
+    .float-2 { animation: float-delayed 5s ease-in-out infinite 0.5s; }
+    .float-3 { animation: gentle-bounce 3s ease-in-out infinite 1s; }
+    .wave-arm { animation: wave 2s ease-in-out infinite; transform-origin: bottom center; }
+    
+    .soft-shadow {
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.08));
     }
-    .navLinks{
-      display:flex;align-items:center;gap:18px;flex-wrap:wrap;
-      color:var(--slate);
-      font-weight:650;
-      font-size:14px;
+    
+    .card-shadow {
+      box-shadow: 0 25px 60px -12px rgba(0,0,0,0.12), 0 8px 24px -8px rgba(0,0,0,0.08);
     }
-    .navLinks a{text-decoration:none}
-    .navLinks a:hover{color:var(--ink)}
-    .navCtas{display:flex;align-items:center;gap:10px}
-
-    /* Buttons */
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:12px 18px;
-      border-radius:var(--radiusBtn);
-      border:1px solid rgba(15,23,42,.10);
-      text-decoration:none;
-      font-weight:800;
-      cursor:pointer;
-      transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease, opacity .15s ease;
-      white-space:nowrap;
+    
+    .btn-shadow {
+      box-shadow: 0 8px 24px -4px rgba(0,0,0,0.15);
     }
-    .btnPrimary{
-      background:var(--accent);
-      color:#fff;
-      box-shadow: 0 10px 24px rgba(109,40,217,.18);
-      border-color: rgba(109,40,217,.28);
+    
+    .btn-shadow:hover {
+      box-shadow: 0 12px 32px -4px rgba(0,0,0,0.2);
     }
-    .btnPrimary:hover{background:var(--accentHover);transform: translateY(-1px)}
-    .btnPrimary:disabled{opacity:.55;cursor:not-allowed;transform:none}
-    .btnSecondary{
-      background:#fff;
-      color:var(--accent);
-      border-color: rgba(109,40,217,.25);
-    }
-    .btnSecondary:hover{background:var(--accentSoft);transform: translateY(-1px)}
-    .btnGhost{
-      background:rgba(255,255,255,.7);
-      color:var(--ink);
-      border-color: var(--border);
-    }
-    .btnGhost:hover{background:rgba(247,248,251,.9);transform: translateY(-1px)}
-
-    .arrow{
-      width:16px;height:16px;display:inline-block;
-      transition: transform .15s ease;
-    }
-    .btn:hover .arrow{transform: translateX(2px)}
-
-    .btn:focus-visible,
-    .opt:focus-within,
-    summary:focus-visible,
-    input:focus-visible{
-      outline:none;
-      box-shadow: var(--focusRing);
-    }
-
-    /* Sections */
-    .section{padding:84px 0}
-    .sectionSoft{background: linear-gradient(180deg, #FFFFFF 0%, #F8F7FF 100%);}
-
-    /* Cards */
-    .card{
-      background:var(--surface);
-      border:1px solid var(--border);
-      border-radius:var(--radiusCard);
-      box-shadow: var(--shadow);
-    }
-    .cardPad{padding:18px}
-    .cardHover{
-      transition: transform .15s ease, box-shadow .15s ease;
-    }
-    .cardHover:hover{transform: translateY(-2px);box-shadow: var(--shadowHover)}
-
-    /* Grids */
-    .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-    @media(max-width:720px){ .grid3{grid-template-columns:1fr} .navLinks{display:none} }
-
-    .small{font-size:13px;color:var(--slate);line-height:1.55}
-    h2{margin:0 0 10px;font-size:30px;line-height:1.15;letter-spacing:-.3px}
-    h3{margin:0 0 8px;font-size:16px;letter-spacing:-.1px}
-    .lead{margin:0 0 22px;color:var(--slate);font-size:16px;line-height:1.65;max-width:70ch}
-
-    /* Diagnostic */
-    .diagWrap{max-width:900px;margin:0 auto}
-    .diagHeader{
-      display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;
-      margin-bottom:14px;
-    }
-    .diagMeta{
-      display:flex;gap:10px;flex-wrap:wrap;align-items:center;
-      color:var(--slate);font-size:13px;font-weight:700;
-    }
-    .tag{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:7px 10px;border-radius:999px;
-      background: rgba(247,248,251,.9);
-      border:1px solid var(--border);
-    }
-    .tag .mini{width:8px;height:8px;border-radius:50%;background:var(--accent)}
-    .q{font-weight:900;margin:8px 0 14px;font-size:16px}
-    .opt{
-      display:flex;gap:12px;align-items:flex-start;
-      padding:12px 12px;border-radius:16px;
-      border:1px solid rgba(15,23,42,.10);
-      background: rgba(255,255,255,.95);
-      margin-bottom:10px;
-      cursor:pointer;
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-    }
-    .opt:hover{transform: translateY(-1px);box-shadow: 0 10px 24px rgba(15,23,42,.08)}
-    .opt input{margin-top:3px}
-    .opt span{color:var(--slate);line-height:1.55}
-    .opt.isSelected{border-color: rgba(109,40,217,.30)}
-    .result{
-      display:none;
-      margin-top:14px;
-      border-radius:18px;
-      border:1px solid rgba(109,40,217,.18);
-      background: linear-gradient(180deg, rgba(109,40,217,.06), rgba(237,233,254,.40));
-      padding:14px 14px;
-    }
-    .result h3{margin:0 0 6px}
-    .result p{margin:0;color:var(--slate);line-height:1.6}
-
-    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:18px}
-
-    /* Inline hint (replaces alert) */
-    .inlineHint{
-      display:none;
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:14px;
-      background: rgba(245,158,11,.10);
-      border:1px solid rgba(245,158,11,.22);
-      color: rgba(93,63,0,.95);
-      font-size:13px;
-      font-weight:700;
-      line-height:1.4;
-    }
-
-    /* Feature cards */
-    .metric{font-size:22px;font-weight:950;letter-spacing:-.3px;margin:0 0 6px;}
-    .iconBox{
-      width:44px;height:44px;border-radius:14px;
-      background: rgba(109,40,217,.10);
-      border:1px solid rgba(109,40,217,.16);
-      display:flex;align-items:center;justify-content:center;
-      margin-bottom:10px;
-    }
-    .iconBox svg{width:22px;height:22px;stroke:var(--accent)}
-
-    .footer{
-      padding:40px 0;
-      border-top:1px solid var(--border);
-      color:var(--slate);
-      font-size:13px;
-      line-height:1.7;
-    }
-
-    /* FAQ */
-    details{
-      border:1px solid var(--border);
-      background:#fff;
-      border-radius:16px;
-      padding:12px 14px;
-      margin:10px 0;
-      box-shadow: 0 10px 24px rgba(15,23,42,.05);
-    }
-    summary{cursor:pointer;font-weight:850;color:var(--ink)}
-    details p{margin:10px 0 0;color:var(--slate);line-height:1.6}
-
-    /* =========================
-       HERO (entry / awareness)
-       ========================= */
-    .heroModern{
-      background:
-        radial-gradient(1200px 600px at 20% 10%, rgba(255,157,0,.10), transparent 60%),
-        radial-gradient(900px 520px at 80% 25%, rgba(255,106,42,.10), transparent 62%),
-        var(--bg);
-      color: var(--ink);
-      padding: clamp(36px, 5vw, 74px) 18px;
-    }
-    .heroModern__wrap{max-width:1120px;margin:0 auto}
-    .heroModern__grid{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: clamp(22px, 4vw, 56px);
-      align-items:center;
-    }
-    .heroModern__eyebrow{
-      display:inline-block;
-      padding:10px 14px;
-      border: 1px solid var(--soft);
-      background: rgba(255,255,255,.55);
-      border-radius:999px;
-      font-size:13px;
-      color: var(--muted);
-      margin:0 0 14px 0;
-    }
-    .heroModern__title{
-      font-size: clamp(34px, 4.2vw, 54px);
-      line-height: 1.06;
-      letter-spacing: -0.02em;
-      margin:0 0 10px 0;
-    }
-    .heroModern__accent{color: var(--accent)}
-    .heroModern__definition{
-      margin: 0 0 14px 0;
-      color: rgba(11,18,32,.82);
-      font-size: 14px;
-      line-height: 1.5;
-      max-width: 70ch;
-    }
-    .heroModern__definition strong{font-weight:900}
-    .heroModern__lead{
-      font-size:16px;
-      line-height:1.6;
-      color: var(--muted);
-      max-width:54ch;
-      margin:0 0 16px 0;
-    }
-
-    /* Sample output (above the fold proof) */
-    .sampleBox{
-      margin-top: 14px;
-      padding: 14px 14px;
-      border-radius: 18px;
-      border: 1px solid rgba(109,40,217,.16);
-      background: linear-gradient(180deg, rgba(109,40,217,.05), rgba(237,233,254,.28));
-    }
-    .sampleTop{
-      display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
-      margin-bottom:10px;
-    }
-    .sampleLabel{
-      display:inline-flex;align-items:center;gap:8px;
-      font-size:12px;font-weight:900;color:var(--accent);
-      letter-spacing:.2px;
-      text-transform:uppercase;
-    }
-    .samplePill{
-      font-size:12px;
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.75);
-      color: rgba(11,18,32,.78);
-      white-space:nowrap;
-      font-weight:850;
-    }
-    .sampleGrid{display:grid;grid-template-columns: 1fr;gap:10px;}
-    .sampleRow{
-      border-radius:14px;
-      border:1px solid rgba(15,23,42,.10);
-      background: rgba(255,255,255,.85);
-      padding:10px 12px;
-    }
-    .sampleRow strong{display:block;margin:0 0 2px;font-weight:950}
-    .sampleRow span{display:block;color:var(--slate);font-size:13px;line-height:1.5}
-    .sampleFix{
-      border-radius:14px;
-      border:1px dashed rgba(109,40,217,.28);
-      background: rgba(255,255,255,.68);
-      padding:10px 12px;
-    }
-    .sampleFixTitle{font-weight:950;color:rgba(11,18,32,.90);margin:0 0 4px}
-    .sampleFixList{margin:0;padding-left:18px;color:var(--slate);font-size:13px;line-height:1.55}
-    .sampleFixList li{margin:4px 0}
-
-    .heroModern__ctaRow{
-      display:flex;
-      gap:18px;
-      align-items:center;
-      flex-wrap:wrap;
-      margin-top: 14px;
-      margin-bottom:16px;
-    }
-    .heroModern__micro{
-      display:grid;
-      gap:6px;
-      padding:10px 12px;
-      border-radius:14px;
-      background: rgba(255,255,255,.55);
-      border:1px solid var(--soft);
-    }
-    .microLine{
-      font-size:13px;
-      color: var(--muted);
-      display:flex;
-      gap:8px;
-      align-items:center;
-    }
-    .microLine::before{
-      content:"";
-      width: 8px; height: 8px;
-      border-radius:2px;
-      background: rgba(255,106,42,.8);
-      box-shadow: 0 0 0 3px rgba(255,106,42,.12);
-    }
-    .heroModern__bullets{
-      list-style:none;
-      padding:0;
-      margin:0 0 14px 0;
-      display:grid;
-      gap:8px;
-      color: var(--muted);
-      font-size:14px;
-    }
-    .heroModern__bullets li{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-    }
-    .heroModern__bullets li::before{
-      content:"✓";
-      color: var(--accent);
-      font-weight:900;
-      margin-top:1px;
-    }
-    .heroModern__chips{display:flex;flex-wrap:wrap;gap:10px}
-    .chip{
-      font-size:13px;
-      color: rgba(20,19,23,.78);
-      border:1px solid var(--soft);
-      background: rgba(255,255,255,.55);
-      padding:9px 12px;
-      border-radius:999px;
-    }
-
-    .heroModern__visual{position:relative;min-height:420px}
-    .blob{
-      position:absolute;
-      inset: 26px 10px auto auto;
-      width: min(430px, 100%);
-      height: 340px;
-      border-radius: 220px;
-      background: linear-gradient(135deg, var(--accent2), var(--accent));
-      filter: saturate(1.05);
-      box-shadow: 0 30px 90px rgba(255,106,42,.22);
-      transform: rotate(-10deg);
-    }
-    .figure{
-      position:absolute;
-      right: 34px;
-      top: 68px;
-      width: 220px;
-      height: 260px;
-    }
-    .figure__head{
-      width:56px;height:56px;border-radius:50%;
-      background: rgba(20,19,23,.15);
-      position:absolute;right:68px;top:10px;
-    }
-    .figure__body{
-      width:140px;height:160px;border-radius:32px;
-      background: rgba(255,255,255,.55);
-      border:1px solid rgba(255,255,255,.45);
-      position:absolute;right:40px;top:70px;
-      box-shadow: 0 18px 50px rgba(20,19,23,.10);
-    }
-    .figure__laptop{
-      width:170px;height:110px;border-radius:18px;
-      background: rgba(20,19,23,.18);
-      position:absolute;right:18px;top:148px;
-    }
-
-    .heroCard{
-      position:absolute;
-      left: 18px;
-      bottom: 18px;
-      width: min(360px, 92%);
-      background: var(--card);
-      border: 1px solid rgba(20,19,23,.10);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 16px;
-      backdrop-filter: blur(10px);
-    }
-    .heroCard__top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:10px;
-    }
-    .heroCard__kicker{font-weight:900;letter-spacing:.01em;margin-bottom:3px}
-    .heroCard__meta{font-size:13px;color:var(--muted)}
-    .pill{
-      font-size:12px;
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid var(--soft);
-      background: rgba(255,255,255,.55);
-      color: rgba(20,19,23,.78);
-      white-space:nowrap;
-    }
-    .heroCard__q{
-      font-size:14px;
-      line-height:1.45;
-      color: rgba(20,19,23,.86);
-      margin:10px 0 12px 0;
-      padding:10px 12px;
-      border-radius:14px;
-      background: rgba(20,19,23,.04);
-      border:1px solid rgba(20,19,23,.06);
-    }
-    .heroCard__answers{display:grid;gap:10px}
-    .heroRadio{
-      display:grid;
-      grid-template-columns: 18px 1fr;
-      gap:10px;
-      padding:10px 12px;
-      border-radius:16px;
-      border:1px solid rgba(20,19,23,.08);
-      background: rgba(255,255,255,.62);
-      cursor:pointer;
-    }
-    .heroRadio input{position:absolute;opacity:0;pointer-events:none}
-    .heroRadio__ui{
-      width:16px;height:16px;border-radius:50%;
-      border:2px solid rgba(20,19,23,.18);
-      margin-top:2px;
-      background:white;
-      box-shadow: inset 0 0 0 4px white;
-    }
-    .heroRadio input:checked + .heroRadio__ui{
-      border-color: rgba(255,106,42,.55);
-      box-shadow: inset 0 0 0 4px white, 0 0 0 4px rgba(255,106,42,.14);
-      background: rgba(255,106,42,.20);
-    }
-    .heroRadio__text{font-size:14px;line-height:1.35}
-    .heroRadio__sub{
-      display:block;
-      font-size:12px;
-      color: var(--muted);
-      margin-top:3px;
-    }
-
-    /* Result actions */
-    .resultActions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
-      margin-top:12px;
-    }
-    .resultNote{
-      font-size:13px;
-      color: var(--slate);
-      line-height:1.55;
-      max-width: 70ch;
-      margin-top:10px;
-    }
-
-    /* Checklist section */
-    .checklistWrap{max-width: 900px;margin: 0 auto;}
-    .checklistSteps{display:grid;gap:12px;margin-top: 12px;}
-    .step{
-      border-radius:16px;
-      border:1px solid var(--border);
-      background:#fff;
-      padding:14px 14px;
-      box-shadow: 0 10px 24px rgba(15,23,42,.05);
-    }
-    .stepTitle{margin:0 0 6px;font-weight:950}
-    .stepBody{margin:0;color:var(--slate);line-height:1.6}
-
-    /* URL submission */
-    .formRow{display:grid;gap:10px;margin-top:10px}
-    .fieldLabel{display:block;font-weight:900;margin-bottom:8px}
-    .input{
-      width:100%;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid rgba(15,23,42,.14);
-      font-size:16px;
-      outline:none;
-      background:#fff;
-    }
-
-    .confirmBox{
-      display:none;
-      margin-top:12px;
-      padding:12px 14px;
-      border-radius:16px;
-      border:1px solid rgba(22,163,74,.22);
-      background: rgba(22,163,74,.08);
-      color: rgba(7,66,26,.95);
-      font-weight:800;
-      line-height:1.45;
-    }
-    .confirmSmall{
-      margin-top:8px;
-      font-size:13px;
-      color: var(--slate);
-      line-height:1.6;
-      font-weight:650;
-    }
-
-    @media (max-width: 980px){
-      .heroModern__grid{grid-template-columns:1fr}
-      .heroModern__visual{min-height:460px}
-      .blob{inset: 10px 0 auto auto; width:100%; height:300px; transform: rotate(-8deg)}
-      .figure{right:16px; top:52px; transform: scale(.95)}
-      .heroCard{left:0; right:0; margin:0 auto}
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #1a1a1a 0%, #3d3d3d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
   </style>
-</head>
-
-<body id="top">
-  <!-- NAV -->
-  <div class="navWrap">
-    <div class="container">
-      <div class="nav">
-        <a class="brand" href="#top" aria-label="Rizzry home">
-          <svg width="160" height="36" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rizzry">
-            <g>
-              <rect x="2" y="6" width="34" height="28" rx="10" fill="#6D28D9"/>
-              <path d="M12 28L7 34V28H12Z" fill="#6D28D9"/>
-              <path d="M14 14H22.5C25 14 26.5 15.5 26.5 17.8C26.5 20 25 21.4 22.6 21.6H20.2L26.5 26H22.9L17.4 22H17V26H14V14ZM17 16.6V19.6H22.1C23.2 19.6 23.9 19 23.9 18.1C23.9 17.1 23.2 16.6 22.1 16.6H17Z" fill="white"/>
-            </g>
-            <g>
-              <text x="46" y="26" font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
-                font-size="20" font-weight="800" fill="#0B1220" letter-spacing="0.2">Rizzry</text>
-            </g>
-            <circle cx="168" cy="14" r="3" fill="#A78BFA"/>
-          </svg>
-        </a>
-
-        <div class="navLinks" aria-label="Primary navigation">
-          <a href="#diagnostic">Diagnostic</a>
-          <a href="#checklist">Checklist</a>
-          <a href="#submit-url">Submit URL</a>
-          <a href="#faq">FAQ</a>
-        </div>
-
-        <div class="navCtas">
-          <a class="btn btnPrimary" href="#diagnostic">
-            Take the 10-second check
-            <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M5 12h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
-              <path d="M13 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-      </div>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body overflow-auto" style="background: linear-gradient(180deg, #FAF7F2 0%, #F5F0E8 50%, #FDF9F3 100%);">
+  <div class="min-h-full w-full"><!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-5">
+    <div class="max-w-7xl mx-auto flex justify-between items-center"><button class="w-10 h-10 rounded-xl bg-white/80 backdrop-blur-sm flex items-center justify-center card-shadow hover:bg-white transition-all duration-300">
+      <svg width="18" height="12" viewbox="0 0 18 12" fill="none"><path d="M1 1H17M1 6H12M1 11H17" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" />
+      </svg></button>
+     <div class="flex items-center gap-3"><span class="text-sm font-medium text-neutral-600 hidden sm:block">Already training?</span> <button class="px-5 py-2.5 rounded-full bg-white/80 backdrop-blur-sm text-sm font-semibold text-neutral-800 card-shadow hover:bg-white transition-all duration-300"> Sign In </button>
+     </div>
     </div>
-  </div>
-
-  <!-- 1) ENTRY / AWARENESS -->
-  <section class="heroModern">
-    <div class="heroModern__wrap">
-      <div class="heroModern__grid">
+   </nav><!-- Hero Section -->
+   <section class="relative pt-32 pb-16 px-6 overflow-hidden">
+    <div class="max-w-7xl mx-auto"><!-- Tagline -->
+     <p id="tagline" class="text-center text-sm sm:text-base font-medium tracking-widest uppercase mb-6 sm:mb-8" style="color: #8B7355;">Build Rizz. Online and In Real Life.</p><!-- Giant Typography with Characters -->
+     <div class="relative flex justify-center items-center mb-12 sm:mb-16"><!-- Character 1 - Sitting on R -->
+      <div class="absolute -left-4 sm:left-8 md:left-16 lg:left-24 top-0 sm:-top-4 float-1 soft-shadow z-10">
+       <svg width="80" height="100" viewbox="0 0 80 100" fill="none" class="w-16 h-20 sm:w-20 sm:h-24 md:w-20 md:h-24"><!-- Body --> <ellipse cx="40" cy="70" rx="22" ry="25" fill="url(#body1)" /> <!-- Head --> <circle cx="40" cy="32" r="22" fill="url(#head1)" /> <!-- Sunglasses --> <rect x="22" y="28" width="14" height="10" rx="3" fill="#1a1a1a" /> <rect x="44" y="28" width="14" height="10" rx="3" fill="#1a1a1a" /> <rect x="36" y="31" width="8" height="3" fill="#1a1a1a" /> <!-- Smirk --> <path d="M34 44 Q40 48 46 44" stroke="#C4A77D" stroke-width="2.5" stroke-linecap="round" fill="none" /> <!-- Arm waving --> <g class="wave-arm">
+         <ellipse cx="65" cy="55" rx="8" ry="6" fill="url(#arm1)" transform="rotate(-30 65 55)" />
+        </g> <!-- Legs --> <ellipse cx="30" cy="92" rx="10" ry="6" fill="url(#leg1)" /> <ellipse cx="50" cy="92" rx="10" ry="6" fill="url(#leg1)" /> <defs>
+         <lineargradient id="body1" x1="40" y1="45" x2="40" y2="95" gradientunits="userSpaceOnUse">
+          <stop stop-color="#FFD4A3" />
+          <stop offset="1" stop-color="#E8BC8A" />
+         </lineargradient>
+         <lineargradient id="head1" x1="40" y1="10" x2="40" y2="54" gradientunits="userSpaceOnUse">
+          <stop stop-color="#FFE4C4" />
+          <stop offset="1" stop-color="#F5D4B0" />
+         </lineargradient>
+         <lineargradient id="arm1" x1="65" y1="49" x2="65" y2="61" gradientunits="userSpaceOnUse">
+          <stop stop-color="#FFE4C4" />
+          <stop offset="1" stop-color="#F5D4B0" />
+         </lineargradient>
+         <lineargradient id="leg1" x1="40" y1="86" x2="40" y2="98" gradientunits="userSpaceOnUse">
+          <stop stop-color="#FFD4A3" />
+          <stop offset="1" stop-color="#E8BC8A" />
+         </lineargradient>
+        </defs>
+       </svg>
+      </div><!-- Character 2 - Leaning on Y -->
+      <div class="absolute -right-2 sm:right-8 md:right-16 lg:right-24 top-8 sm:top-4 float-2 soft-shadow z-10">
+       <svg width="70" height="90" viewbox="0 0 70 90" fill="none" class="w-14 h-18 sm:w-16 sm:h-20 md:w-[70px] md:h-[90px]"><!-- Body --> <ellipse cx="35" cy="60" rx="20" ry="24" fill="url(#body2)" /> <!-- Head --> <circle cx="35" cy="26" r="20" fill="url(#head2)" /> <!-- Eyes --> <circle cx="28" cy="24" r="4" fill="#1a1a1a" /> <circle cx="42" cy="24" r="4" fill="#1a1a1a" /> <circle cx="29" cy="23" r="1.5" fill="white" /> <circle cx="43" cy="23" r="1.5" fill="white" /> <!-- Confident smile --> <path d="M28 34 Q35 40 42 34" stroke="#B8956E" stroke-width="2.5" stroke-linecap="round" fill="none" /> <!-- Blush --> <ellipse cx="22" cy="30" rx="4" ry="2" fill="#FFCDB2" opacity="0.6" /> <ellipse cx="48" cy="30" rx="4" ry="2" fill="#FFCDB2" opacity="0.6" /> <!-- Arms crossed --> <ellipse cx="20" cy="58" rx="8" ry="6" fill="url(#arm2)" /> <ellipse cx="50" cy="58" rx="8" ry="6" fill="url(#arm2)" /> <!-- Legs --> <ellipse cx="28" cy="82" rx="9" ry="5" fill="url(#leg2)" /> <ellipse cx="42" cy="82" rx="9" ry="5" fill="url(#leg2)" /> <defs>
+         <lineargradient id="body2" x1="35" y1="36" x2="35" y2="84" gradientunits="userSpaceOnUse">
+          <stop stop-color="#C9B8A8" />
+          <stop offset="1" stop-color="#B5A392" />
+         </lineargradient>
+         <lineargradient id="head2" x1="35" y1="6" x2="35" y2="46" gradientunits="userSpaceOnUse">
+          <stop stop-color="#DDD0C4" />
+          <stop offset="1" stop-color="#CBBFB0" />
+         </lineargradient>
+         <lineargradient id="arm2" x1="35" y1="52" x2="35" y2="64" gradientunits="userSpaceOnUse">
+          <stop stop-color="#DDD0C4" />
+          <stop offset="1" stop-color="#CBBFB0" />
+         </lineargradient>
+         <lineargradient id="leg2" x1="35" y1="77" x2="35" y2="87" gradientunits="userSpaceOnUse">
+          <stop stop-color="#C9B8A8" />
+          <stop offset="1" stop-color="#B5A392" />
+         </lineargradient>
+        </defs>
+       </svg>
+      </div><!-- Character 3 - Small one peeking from middle -->
+      <div class="absolute left-1/2 -translate-x-1/2 bottom-0 sm:bottom-2 float-3 soft-shadow z-10 hidden md:block">
+       <svg width="50" height="60" viewbox="0 0 50 60" fill="none"><!-- Body --> <ellipse cx="25" cy="42" rx="14" ry="16" fill="url(#body3)" /> <!-- Head --> <circle cx="25" cy="18" r="14" fill="url(#head3)" /> <!-- Heart eyes --> <path d="M17 16 L19 14 L21 16 L19 19 Z" fill="#E57373" /> <path d="M29 16 L31 14 L33 16 L31 19 Z" fill="#E57373" /> <!-- Happy mouth --> <ellipse cx="25" cy="24" rx="4" ry="3" fill="#A68B6A" /> <!-- Arms up --> <ellipse cx="12" cy="38" rx="5" ry="4" fill="url(#arm3)" transform="rotate(-20 12 38)" /> <ellipse cx="38" cy="38" rx="5" ry="4" fill="url(#arm3)" transform="rotate(20 38 38)" /> <defs>
+         <lineargradient id="body3" x1="25" y1="26" x2="25" y2="58" gradientunits="userSpaceOnUse">
+          <stop stop-color="#A8E6CF" />
+          <stop offset="1" stop-color="#8BD4B8" />
+         </lineargradient>
+         <lineargradient id="head3" x1="25" y1="4" x2="25" y2="32" gradientunits="userSpaceOnUse">
+          <stop stop-color="#C8F7DC" />
+          <stop offset="1" stop-color="#B0E8C8" />
+         </lineargradient>
+         <lineargradient id="arm3" x1="25" y1="34" x2="25" y2="42" gradientunits="userSpaceOnUse">
+          <stop stop-color="#C8F7DC" />
+          <stop offset="1" stop-color="#B0E8C8" />
+         </lineargradient>
+        </defs>
+       </svg>
+      </div><!-- Main Typography -->
+      <h1 id="brand-name" class="font-display text-6xl sm:text-8xl md:text-9xl lg:text-[12rem] xl:text-[14rem] font-extrabold tracking-tight gradient-text relative z-0 select-none">Rizzry</h1>
+     </div><!-- CTAs -->
+     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center"><button id="primary-cta" class="w-full sm:w-auto px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 btn-shadow hover:-translate-y-1" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: #FAF7F2;"> Start Training </button> <button id="secondary-cta" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white font-semibold text-lg text-neutral-800 transition-all duration-300 btn-shadow hover:-translate-y-1"> See Demo </button>
+     </div>
+    </div>
+   </section><!-- Features Section -->
+   <section class="py-20 sm:py-28 px-6">
+    <div class="max-w-6xl mx-auto">
+     <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"><!-- Text Content -->
+      <div class="order-2 lg:order-1">
+       <h2 id="section-title" class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 mb-6 leading-tight">Confidence Is Trainable.</h2>
+       <p id="section-description" class="text-lg sm:text-xl text-neutral-600 leading-relaxed mb-8">Your dating profile isn't working because nobody taught you how to present yourself. Our AI analyzes what actually gets responses, optimizes your bio, and helps you practice real conversations—so you're ready when it matters.</p>
+       <div class="flex flex-wrap gap-4">
+        <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white card-shadow">
+         <svg width="20" height="20" viewbox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#E8F5E9" /> <path d="M6 10L9 13L14 7" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+         </svg><span class="text-sm font-medium text-neutral-700">Profile Optimization</span>
+        </div>
+        <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white card-shadow">
+         <svg width="20" height="20" viewbox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#E3F2FD" /> <path d="M6 10L9 13L14 7" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+         </svg><span class="text-sm font-medium text-neutral-700">Conversation Practice</span>
+        </div>
+        <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white card-shadow">
+         <svg width="20" height="20" viewbox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#FFF3E0" /> <path d="M6 10L9 13L14 7" stroke="#FF9800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+         </svg><span class="text-sm font-medium text-neutral-700">Real-World Ready</span>
+        </div>
+       </div>
+      </div><!-- Demo Card -->
+      <div class="order-1 lg:order-2 relative">
+       <div class="relative z-10 bg-white rounded-3xl p-6 sm:p-8 card-shadow"><!-- Rizz Score Header -->
+        <div class="flex items-center justify-between mb-6">
+         <div>
+          <p class="text-sm font-medium text-neutral-500 uppercase tracking-wide mb-1">Your Rizz Score</p>
+          <div class="flex items-baseline gap-2"><span class="text-5xl sm:text-6xl font-display font-bold" style="color: #1a1a1a;">78</span> <span class="text-lg font-semibold text-green-500">+12 this week</span>
+          </div>
+         </div>
+         <div class="w-16 h-16 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, #FFE4C4 0%, #F5D4B0 100%);">
+          <svg width="32" height="32" viewbox="0 0 32 32" fill="none"><path d="M16 4L20 12L28 13L22 19L23.5 27L16 23L8.5 27L10 19L4 13L12 12L16 4Z" fill="#FF9800" stroke="#FF9800" stroke-width="2" stroke-linejoin="round" />
+          </svg>
+         </div>
+        </div><!-- Progress Bar -->
+        <div class="mb-8">
+         <div class="h-3 rounded-full bg-neutral-100 overflow-hidden">
+          <div class="h-full rounded-full" style="width: 78%; background: linear-gradient(90deg, #FFB74D 0%, #FF9800 100%);"></div>
+         </div>
+         <div class="flex justify-between mt-2 text-xs font-medium text-neutral-400"><span>Beginner</span> <span>Intermediate</span> <span>Expert</span>
+         </div>
+        </div><!-- Optimized Bio -->
+        <div class="mb-6">
+         <p class="text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-3">Optimized Bio</p>
+         <div class="p-4 rounded-2xl" style="background: linear-gradient(135deg, #FAF7F2 0%, #F5F0E8 100%);">
+          <p class="text-neutral-800 leading-relaxed">"Product designer who treats every coffee shop like a remote office. Currently training for my first marathon and pretending I know wine. Let's argue about the best pizza in the city."</p>
+         </div>
+        </div><!-- Conversation Starter -->
         <div>
-          <p class="heroModern__eyebrow">For businesses with traffic but no leads</p>
-
-          <h1 class="heroModern__title">
-            Stop watching 
-            <span class="heroModern__accent">visitors vanish.</span>.
-          </h1>
-
-          <p class="heroModern__lead">
-           Get one simple diagnosis and the exact action that turns views into replies this week.
-            
-          </p>
-
-          
-
-          <div class="heroModern__ctaRow">
-            <a class="btn btnPrimary" href="#diagnostic">Run the 10-second diagnostic</a>
-            
+         <p class="text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-3">Conversation Starter</p>
+         <div class="flex gap-3 items-start">
+          <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, #A8E6CF 0%, #8BD4B8 100%);"><span class="text-lg">✨</span>
           </div>
-
-          <ul class="heroModern__bullets" aria-label="Key points">
-            <li>Built for organic intent, not buzzwords</li>
-            <li>One improvement at a time, measured in response</li>
-          </ul>
-
-        
-
-          <div class="heroModern__chips" aria-label="Common use cases">
-            <span class="chip">Consultants</span>
-            <span class="chip">Local Services</span>
-            <span class="chip">Coaches</span>
-            <span class="chip">Creators</span>
-            <span class="chip">Real Estate</span>
-            <span class="chip">Beauty Pros</span>
+          <div class="p-4 rounded-2xl rounded-tl-md flex-1" style="background: #1a1a1a;">
+           <p class="text-white text-sm leading-relaxed">"So your profile says you're a pizza expert—I'm gonna need you to defend your top pick. And if you say pineapple belongs on it, we might have a problem 😏"</p>
           </div>
+         </div>
         </div>
-
-        <div class="heroModern__visual" aria-hidden="true">
-          <div class="blob"></div>
-          <div class="figure">
-            <div class="figure__head"></div>
-            <div class="figure__body"></div>
-            <div class="figure__laptop"></div>
-          </div>
-          
-          </div>
-        </div>
-
+       </div><!-- Decorative Elements -->
+       <div class="absolute -top-4 -right-4 w-24 h-24 rounded-full opacity-60" style="background: linear-gradient(135deg, #FFE4C4 0%, #F5D4B0 100%); filter: blur(40px);"></div>
+       <div class="absolute -bottom-6 -left-6 w-32 h-32 rounded-full opacity-40" style="background: linear-gradient(135deg, #A8E6CF 0%, #8BD4B8 100%); filter: blur(50px);"></div>
       </div>
+     </div>
     </div>
-  </section>
-
-  <!-- 3.5) OPTIONAL: CHECKLIST (turn insight into change) -->
-  <section id="checklist" class="section">
-    <div class="container">
-      <div class="checklistWrap">
-        <h2>The 10-minute fix checklist</h2>
-        <p class="lead">Use this immediately after your result. The goal is one measurable response improvement, not a redesign.</p>
-
-        <div class="checklistSteps">
-          <div class="step">
-            <p class="stepTitle">Step 1: One primary next step</p>
-            <p class="stepBody">Choose one action you want users to take (book, call, request a quote, buy). Remove competing actions above the fold.</p>
-          </div>
-          <div class="step">
-            <p class="stepTitle">Step 2: Put proof next to the decision</p>
-            <p class="stepBody">Add one specific proof item near the CTA (testimonial with outcome, metric, recognizable client type, before/after).</p>
-          </div>
-          <div class="step">
-            <p class="stepTitle">Step 3: Remove one friction point</p>
-            <p class="stepBody">Cut one step from the path (click, field, or choice). If the action feels easier, response climbs.</p>
-          </div>
-        </div>
-      </div>
+   </section><!-- Footer -->
+   <footer class="py-8 px-6 border-t border-neutral-200/50">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+     <p class="text-sm text-neutral-500">© 2024 Rizzry. All rights reserved.</p>
+     <div class="flex gap-6"><a href="#" class="text-sm text-neutral-500 hover:text-neutral-800 transition-colors">Privacy</a> <a href="#" class="text-sm text-neutral-500 hover:text-neutral-800 transition-colors">Terms</a> <a href="#" class="text-sm text-neutral-500 hover:text-neutral-800 transition-colors">Contact</a>
+     </div>
     </div>
-  </section>
-
-  <!-- 2) ENGAGEMENT — DIAGNOSTIC -->
-  <section id="diagnostic" class="section sectionSoft">
-    <div class="container">
-      <div class="diagWrap">
-        <div class="diagHeader">
-          <div>
-            <h2>Find the leak in 10 seconds.</h2>
-            <p class="lead" style="margin:8px 0 0">Pick the option that matches what happens most often. Then get one clear next move.</p>
-          </div>
-          <div class="diagMeta">
-            <span class="tag"><span class="mini"></span>No email required</span>
-            <span class="tag"><span class="mini" style="background:#A78BFA"></span>One result</span>
-            <span class="tag"><span class="mini" style="background:#94A3B8"></span>One fix</span>
-          </div>
-        </div>
-
-        <div class="card cardPad">
-          <div class="q">When someone discovers your business for the first time, what reliably happens next?</div>
-
-          <label class="opt"><input type="radio" name="rizz" value="A"><span><strong>They take a clear next step</strong> without being prompted.</span></label>
-          <label class="opt"><input type="radio" name="rizz" value="B"><span><strong>Some engage</strong>, but most disappear without action.</span></label>
-          <label class="opt"><input type="radio" name="rizz" value="C"><span><strong>They consume content</strong> but rarely respond.</span></label>
-          <label class="opt"><input type="radio" name="rizz" value="D"><span><strong>I honestly do not know.</strong></span></label>
-          <label class="opt"><input type="radio" name="rizz" value="E"><span><strong>Nothing happens</strong> unless I manually follow up.</span></label>
-
-          <div id="diagHint" class="inlineHint" role="status" aria-live="polite">
-            Select one option to see your result.
-          </div>
-
-          <div class="ctaRow">
-            <button id="showResult" class="btn btnPrimary" type="button" disabled>
-              Show my result
-              <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5 12h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                <path d="M13 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-            <span class="small">No forms. No drama. Just the leak and the fix.</span>
-          </div>
-
-          <!-- 3) INSIGHT — RESULT -->
-          <div id="result" class="result" aria-live="polite"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  
-
-  <!-- 4) CONVERSION PIVOT — URL SUBMISSION -->
-  <section id="submit-url" class="section sectionSoft">
-    <div class="container">
-      <div class="checklistWrap">
-        <h2>Want this applied to your page?</h2>
-        <p class="lead">Submit one URL that gets attention but not action. You will get a short, specific list of fixes you can apply this week.</p>
-
-        <div class="card cardPad">
-          <form id="urlForm" novalidate>
-            <div class="formRow">
-              <label class="fieldLabel" for="siteUrl">Page URL</label>
-              <input class="input" id="siteUrl" name="siteUrl" type="url" inputmode="url" placeholder="https://example.com/your-page" required />
-            </div>
-
-            <div class="formRow">
-              <label class="fieldLabel" for="goal">Desired action (optional)</label>
-              <input class="input" id="goal" name="goal" type="text" placeholder="Example: Book a consultation call" />
-              <p class="small" style="margin:0">If you leave this blank, the audit assumes “contact or book.”</p>
-            </div>
-
-            <div class="ctaRow">
-              <button id="submitUrlBtn" class="btn btnPrimary" type="submit">
-                Submit URL
-                <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M5 12h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M13 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-              <a class="btn btnSecondary" href="#diagnostic">Back to diagnostic</a>
-            </div>
-
-            <div id="urlFormHint" class="inlineHint" role="status" aria-live="polite">
-              Enter a valid URL (example: https://yourdomain.com/page).
-            </div>
-
-            <!-- 5) CONFIRMATION & REASSURANCE -->
-            <div id="urlFormConfirm" class="confirmBox" role="status" aria-live="polite">
-              Received.
-              <div class="confirmSmall">
-                What happens next: you will receive a short response audit with specific fixes.
-                If you do not see it, check spam, then resubmit.
-              </div>
-            </div>
-
-            <input type="hidden" name="source" value="rizzry-submit-url" />
-          </form>
-
-          <p class="small" style="margin:12px 0 0">
-            Privacy note: do not submit pages that require login or contain sensitive customer data.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="section">
-    <div class="container">
-      <h2>FAQ</h2>
-      <p class="lead">Short answers, because you have work to do.</p>
-
-      <details>
-        <summary>Is this telling me to post more?</summary>
-        <p>No. Posting more can amplify a broken system. This diagnostic focuses on what happens after someone notices you.</p>
-      </details>
-
-      <details>
-        <summary>Do I need to change my whole website?</summary>
-        <p>Usually not. Most response issues come from one weak link: unclear next step, thin trust, or unnecessary friction.</p>
-      </details>
-
-      <details>
-        <summary>Why call it “rizz” at all?</summary>
-        <p>We use it as shorthand for response, not charisma. The goal is follow-through, not performance.</p>
-      </details>
-
-      <details>
-        <summary>Will this work for local businesses?</summary>
-        <p>Yes. “No inquiries from website” is one of the most common local-business problems. The mechanics are the same.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <strong>Rizzry</strong> focuses on response systems for solo operators.
-      If your site gets attention but no action, the problem is rarely effort. It is the missing bridge between interest and the next step.
-      <div class="ctaRow" style="margin-top:14px">
-        <a class="btn btnPrimary" href="#diagnostic">Run the 10-second diagnostic
-          <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M5 12h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
-            <path d="M13 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <a class="btn btnSecondary" href="#top">Back to top</a>
-      </div>
-      <div style="margin-top:12px;color:rgba(85,97,118,.9)">
-        © <span id="yr"></span> Rizzry. All rights reserved.
-      </div>
-    </div>
-  </footer>
-
+   </footer>
+  </div>
   <script>
-    // Footer year
-    document.getElementById("yr").textContent = new Date().getFullYear();
-
-    // ======== 2) ENGAGEMENT → 3) INSIGHT ========
-    const resultEl = document.getElementById("result");
-    const btn = document.getElementById("showResult");
-    const hintEl = document.getElementById("diagHint");
-
-    // ======== 4) CONVERSION PIVOT ========
-    const submitSection = document.getElementById("submit-url");
-    const urlForm = document.getElementById("urlForm");
-    const urlHint = document.getElementById("urlFormHint");
-    const urlConfirm = document.getElementById("urlFormConfirm");
-    const siteUrlInput = document.getElementById("siteUrl");
-    const goalInput = document.getElementById("goal");
-
-    const results = {
-      A: {
-        title: "Result: Your system creates response.",
-        body: "People take a next step without you pushing them. Your opportunity is consistency and scale: tighten one path and replicate it.",
-        hint: "Choose one primary conversion path and measure it weekly."
-      },
-      B: {
-        title: "Result: Response is inconsistent.",
-        body: "Some people engage, but most disappear. This usually points to an unclear next step or a trust gap at the moment of decision.",
-        hint: "Rewrite one CTA into a single, concrete action and put proof beside it."
-      },
-      C: {
-        title: "Result: You have attention, not response.",
-        body: "People consume content but rarely act. This often means the next step feels risky, unclear, or not worth the effort.",
-        hint: "Remove friction and make one action obvious in one pass."
-      },
-      D: {
-        title: "Result: You cannot see the system.",
-        body: "If you cannot observe the next step, you cannot improve it. Uncertainty becomes permanent and response cannot compound.",
-        hint: "Define one measurable next step and track it."
-      },
-      E: {
-        title: "Result: You are doing all the follow-through manually.",
-        body: "The business works when you chase it. That is effective in the short term and fragile long term.",
-        hint: "Build one follow-up loop that runs without you."
-      }
+    const defaultConfig = {
+      tagline: "Build Rizz. Online and In Real Life.",
+      brand_name: "Rizzry",
+      primary_cta: "Start Training",
+      secondary_cta: "See Demo",
+      section_title: "Confidence Is Trainable.",
+      section_description: "Your dating profile isn't working because nobody taught you how to present yourself. Our AI analyzes what actually gets responses, optimizes your bio, and helps you practice real conversations—so you're ready when it matters.",
+      background_color: "#FAF7F2",
+      text_color: "#1a1a1a",
+      accent_color: "#8B7355",
+      button_color: "#1a1a1a",
+      card_color: "#ffffff",
+      font_family: "Space Grotesk",
+      font_size: 16
     };
 
-    function getPicked() {
-      return document.querySelector("input[name='rizz']:checked");
+    async function onConfigChange(config) {
+      // Update text content
+      document.getElementById('tagline').textContent = config.tagline || defaultConfig.tagline;
+      document.getElementById('brand-name').textContent = config.brand_name || defaultConfig.brand_name;
+      document.getElementById('primary-cta').textContent = config.primary_cta || defaultConfig.primary_cta;
+      document.getElementById('secondary-cta').textContent = config.secondary_cta || defaultConfig.secondary_cta;
+      document.getElementById('section-title').textContent = config.section_title || defaultConfig.section_title;
+      document.getElementById('section-description').textContent = config.section_description || defaultConfig.section_description;
+
+      // Apply colors
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const buttonColor = config.button_color || defaultConfig.button_color;
+      const cardColor = config.card_color || defaultConfig.card_color;
+
+      document.body.style.background = `linear-gradient(180deg, ${bgColor} 0%, ${adjustColor(bgColor, -5)} 50%, ${bgColor} 100%)`;
+      
+      document.getElementById('tagline').style.color = accentColor;
+      
+      const primaryBtn = document.getElementById('primary-cta');
+      primaryBtn.style.background = `linear-gradient(135deg, ${buttonColor} 0%, ${adjustColor(buttonColor, 15)} 100%)`;
+      primaryBtn.style.color = bgColor;
+
+      const secondaryBtn = document.getElementById('secondary-cta');
+      secondaryBtn.style.background = cardColor;
+      secondaryBtn.style.color = textColor;
+
+      // Apply fonts
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
+      
+      document.body.style.fontFamily = `${fontFamily}, sans-serif`;
+      document.getElementById('section-description').style.fontSize = `${fontSize * 1.125}px`;
     }
 
-    function setButtonState() {
-      const picked = getPicked();
-      btn.disabled = !picked;
-      hintEl.style.display = picked ? "none" : "block";
+    function adjustColor(hex, percent) {
+      const num = parseInt(hex.replace('#', ''), 16);
+      const amt = Math.round(2.55 * percent);
+      const R = Math.min(255, Math.max(0, (num >> 16) + amt));
+      const G = Math.min(255, Math.max(0, (num >> 8 & 0x00FF) + amt));
+      const B = Math.min(255, Math.max(0, (num & 0x0000FF) + amt));
+      return '#' + (0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1);
     }
 
-    // Start disabled; show inline guidance until they pick.
-    setButtonState();
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+          },
+          {
+            get: () => config.card_color || defaultConfig.card_color,
+            set: (value) => { config.card_color = value; window.elementSdk.setConfig({ card_color: value }); }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+          },
+          {
+            get: () => config.button_color || defaultConfig.button_color,
+            set: (value) => { config.button_color = value; window.elementSdk.setConfig({ button_color: value }); }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => { config.accent_color = value; window.elementSdk.setConfig({ accent_color: value }); }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => { config.font_family = value; window.elementSdk.setConfig({ font_family: value }); }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => { config.font_size = value; window.elementSdk.setConfig({ font_size: value }); }
+        }
+      };
+    }
 
-    // Enable on selection + add selected styling.
-    document.querySelectorAll("input[name='rizz']").forEach((input) => {
-      input.addEventListener("change", () => {
-        setButtonState();
-        document.querySelectorAll(".opt").forEach((lbl) => lbl.classList.remove("isSelected"));
-        const selectedLabel = input.closest(".opt");
-        if (selectedLabel) selectedLabel.classList.add("isSelected");
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["tagline", config.tagline || defaultConfig.tagline],
+        ["brand_name", config.brand_name || defaultConfig.brand_name],
+        ["primary_cta", config.primary_cta || defaultConfig.primary_cta],
+        ["secondary_cta", config.secondary_cta || defaultConfig.secondary_cta],
+        ["section_title", config.section_title || defaultConfig.section_title],
+        ["section_description", config.section_description || defaultConfig.section_description]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
       });
-    });
-
-    // 3) INSIGHT — show result, then immediately offer 4) URL submission.
-    btn.addEventListener("click", () => {
-      const picked = getPicked();
-      if (!picked) {
-        setButtonState();
-        resultEl.style.display = "none";
-        return;
-      }
-
-      const r = results[picked.value];
-
-      resultEl.style.display = "block";
-      resultEl.innerHTML =
-        "<h3>" + r.title + "</h3>" +
-        "<p>" + r.body + "</p>" +
-        "<p style='margin-top:10px'><strong>Next move:</strong> <span style='color:var(--slate)'>" + r.hint + "</span></p>" +
-        "<div class='resultActions'>" +
-          "<a class='btn btnPrimary' href='#submit-url'>Apply this to my page (submit URL)</a>" +
-          "<a class='btn btnSecondary' href='#checklist'>Open the 10-minute checklist</a>" +
-        "</div>" +
-        "<div class='resultNote'>Critical moment: do not stop at insight. If you want this applied to your page, submit the URL next.</div>";
-
-      resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-
-    // ======== 4) URL SUBMISSION → 5) CONFIRMATION ========
-
-    function isValidHttpUrl(value) {
-      try {
-        const u = new URL(value);
-        return u.protocol === "http:" || u.protocol === "https:";
-      } catch (_) {
-        return false;
-      }
     }
-
-    urlForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      urlHint.style.display = "none";
-      urlConfirm.style.display = "none";
-
-      const urlValue = (siteUrlInput.value || "").trim();
-      const goalValue = (goalInput.value || "").trim();
-
-      if (!isValidHttpUrl(urlValue)) {
-        urlHint.style.display = "block";
-        siteUrlInput.focus();
-        return;
-      }
-
-      // Replace this with your real endpoint (Make webhook, etc.)
-      // Example:
-      // const ENDPOINT = "https://hook.us1.make.com/xxxxxxxxxxxx";
-      // await fetch(ENDPOINT, {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ siteUrl: urlValue, goal: goalValue, source: "rizzry-submit-url" })
-      // });
-
-      // For now, show confirmation only (no network call).
-      urlConfirm.style.display = "block";
-
-      // Optional: clear fields after confirmation
-      // siteUrlInput.value = "";
-      // goalInput.value = "";
-
-      urlConfirm.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
   </script>
-</body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d1b585711f3bcb3',t:'MTc3MTczMDM5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
